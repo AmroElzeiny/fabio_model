@@ -1,0 +1,2 @@
+candidate_id,timestamp_ns,setup_type,direction,entry_reference_ticks,stop_ticks,target_ticks,session,trading_day,outcome,quantity,timestamp_utc
+6fe9150c41bdcce4408106f7b2cd5e74,1768315259199801653,TREND,LONG,80184,80178,80240,NY_RTH,2026-01-13,order_submitted,10,2026-01-13T14:40:59.199802+00:00

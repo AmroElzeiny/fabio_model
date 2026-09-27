@@ -1,0 +1,140 @@
+{
+  "$defs": {
+    "EventAction": {
+      "enum": [
+        "ADD",
+        "CANCEL",
+        "MODIFY",
+        "FILL",
+        "TRADE",
+        "CLEAR",
+        "SNAPSHOT",
+        "SESSION_BOUNDARY",
+        "CONTRACT_ROLL",
+        "NONE"
+      ],
+      "title": "EventAction",
+      "type": "string"
+    },
+    "Side": {
+      "enum": [
+        "BID",
+        "ASK",
+        "NONE"
+      ],
+      "title": "Side",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/EventAction"
+    },
+    "active_contract": {
+      "title": "Active Contract",
+      "type": "string"
+    },
+    "channel_id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Channel Id"
+    },
+    "instrument": {
+      "title": "Instrument",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "order_id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Order Id"
+    },
+    "price_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Price Ticks"
+    },
+    "provider_flags": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Provider Flags"
+    },
+    "schema_version": {
+      "default": "FABIO_MECHANICAL_V1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sequence": {
+      "minimum": 0,
+      "title": "Sequence",
+      "type": "integer"
+    },
+    "side": {
+      "$ref": "#/$defs/Side",
+      "default": "NONE"
+    },
+    "size": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Size",
+      "type": "integer"
+    },
+    "snapshot_complete": {
+      "default": false,
+      "title": "Snapshot Complete",
+      "type": "boolean"
+    },
+    "source": {
+      "default": "synthetic",
+      "title": "Source",
+      "type": "string"
+    },
+    "ts_event_ns": {
+      "minimum": 0,
+      "title": "Ts Event Ns",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "ts_event_ns",
+    "sequence",
+    "instrument",
+    "active_contract",
+    "action"
+  ],
+  "title": "MarketEvent",
+  "type": "object"
+}

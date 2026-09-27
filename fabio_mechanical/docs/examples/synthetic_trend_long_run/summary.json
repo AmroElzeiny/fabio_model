@@ -1,0 +1,22 @@
+{
+  "ai_enabled": false,
+  "candidates": 1,
+  "data_quality_reasons": [],
+  "decision_provider": "MECHANICAL",
+  "ending_equity": "102678.000",
+  "entry_slippage_ticks_total": 16,
+  "events": 69102,
+  "exit_slippage_ticks_total": 0,
+  "fees": "42.0",
+  "fills": 5,
+  "gross_pnl": "2720.00",
+  "maker_fills": 3,
+  "max_drawdown_mark_to_market": "0.010485",
+  "net_pnl": "2678.00",
+  "snapshots": 17200,
+  "state_transitions": 18,
+  "taker_fills": 2,
+  "trade_safe_at_end": true,
+  "trades": 1,
+  "ts_event_regressions": 0
+}

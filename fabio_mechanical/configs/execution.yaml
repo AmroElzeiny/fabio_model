@@ -1,0 +1,12 @@
+# Execution simulator. Fills are event-driven against the reconstructed book; there are no
+# candle-close fills.
+latency_ms: 10                      # order submit -> exchange arrival (entries, brackets, exits)
+default_slippage_ticks: 1           # extra adverse ticks on every taker fill, on top of book sweep
+max_slippage_ticks: 10              # protection band for market orders from the touch at arrival
+commission_per_contract: 2.10       # per side, per contract (set to your broker all-in)
+fee_per_contract: 0.00              # per side exchange/clearing/NFA fees if not in commission
+queue_fill_fraction: 0.50           # only used when order-level queue data is unavailable
+max_gap_ticks: 20                   # reject entry if touch moved this far from the decision price
+allow_partial_fills: true
+entry_order_type: MARKET
+bracket: {stop: STOP_MARKET, target: LIMIT, oco: server_side_atomic}

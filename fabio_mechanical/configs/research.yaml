@@ -1,0 +1,25 @@
+# Scientific research protocol. Date partitions are CME trading days (YYYY-MM-DD, inclusive).
+min_trades: 3
+deterministic_seed: 42
+# Configure BEFORE any optimization. Optimization/WFO may only read DEVELOPMENT days; the
+# validation window is evaluated with frozen parameters; OOS requires a lock manifest.
+phases:
+  development: null           # e.g. {start: "2026-01-05", end: "2026-02-27"}
+  validation: null            # e.g. {start: "2026-03-02", end: "2026-03-27"}
+  oos: null                   # e.g. {start: "2026-03-30", end: "2026-04-30"}
+optimizer:
+  mode: random                # grid | random
+  max_candidates: 50
+  plateau_tolerance: 0.05     # fraction of |best score| retained as the plateau
+walk_forward:
+  train_days: 10
+  validation_days: 5
+  step_days: 5
+  max_candidates: 20
+monte_carlo:
+  iterations: 1000
+  block_size: 3
+robustness:
+  fee_multipliers: [1, 2]
+  slippage_multipliers: [1, 2, 3]
+  latency_ms: [0, 10, 50, 100, 250]

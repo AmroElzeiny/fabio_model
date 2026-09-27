@@ -1,0 +1,5291 @@
+{
+  "contract_version": "FABIO_MECHANICAL_V1",
+  "descriptor": {
+    "contract_version": "FABIO_MECHANICAL_V1",
+    "enums": {
+      "Direction": [
+        "LONG",
+        "SHORT",
+        "FLAT"
+      ],
+      "EventAction": [
+        "ADD",
+        "CANCEL",
+        "MODIFY",
+        "FILL",
+        "TRADE",
+        "CLEAR",
+        "SNAPSHOT",
+        "SESSION_BOUNDARY",
+        "CONTRACT_ROLL",
+        "NONE"
+      ],
+      "MarketState": [
+        "BALANCE",
+        "IMBALANCE_UP",
+        "IMBALANCE_DOWN",
+        "TRANSITION",
+        "UNKNOWN"
+      ],
+      "OrderPurpose": [
+        "ENTRY",
+        "STOP",
+        "TARGET",
+        "EXIT"
+      ],
+      "OrderStatus": [
+        "NEW",
+        "PARTIAL",
+        "FILLED",
+        "REJECTED",
+        "CANCELLED"
+      ],
+      "OrderType": [
+        "MARKET",
+        "LIMIT",
+        "STOP"
+      ],
+      "SetupType": [
+        "TREND",
+        "MEAN_REVERSION"
+      ],
+      "Side": [
+        "BID",
+        "ASK",
+        "NONE"
+      ]
+    },
+    "models": {
+      "AuctionFeatureSnapshot": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "ts_event_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "state_candidate",
+            "type": "enum:MarketState"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "value_area_overlap",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "poc_migration_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "vah_migration_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "val_migration_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "directional_efficiency",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "range_expansion_ratio",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "time_inside_value_fraction",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "time_outside_value_fraction",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "acceptance_outside_value",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "return_to_value_frequency",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "vwap_slope_ticks_per_event",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "impulse_velocity_ticks_per_event",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "pullback_depth_fraction",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "delta_persistence",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "cvd_persistence",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "raw",
+            "type": "dict<str,float>"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "balanced",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "out_of_balance",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_id",
+            "type": "union<null,str>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_low_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_high_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_poc_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_range_low_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_range_high_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_value_overlap",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_poc_migration_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "balance_directional_efficiency",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "excursion_active",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "enum:FLAT",
+            "name": "breakout_side",
+            "type": "enum:Direction"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "breakout_distance_ticks",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "acceptance_events",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "displacement_zscore",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "structure_break",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "impulse_id",
+            "type": "union<null,str>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "impulse_low_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "impulse_high_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "impulse_ticks",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "impulse_efficiency",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "reclaim_inside_balance",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "failed_auction",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "failed_auction_extreme_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "reclaim_leg_id",
+            "type": "union<null,str>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "reclaim_leg_low_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "reclaim_leg_high_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "reclaim_leg_ticks",
+            "type": "float"
+          }
+        ],
+        "frozen": true
+      },
+      "BalanceArea": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "balance_id",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "source",
+            "type": "literal<'intraday_balance','prior_session'>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "low_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "high_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "poc_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "range_low_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "range_high_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "start_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "end_ns",
+            "type": "int"
+          }
+        ],
+        "frozen": true
+      },
+      "BookLevel": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "price_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "<required>",
+            "name": "size",
+            "type": "int"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "<required>",
+            "name": "order_count",
+            "type": "int"
+          }
+        ],
+        "frozen": true
+      },
+      "BookSnapshot": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "ts_event_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "sequence",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "best_bid",
+            "type": "union<model:BookLevel,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "best_ask",
+            "type": "union<model:BookLevel,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "bids",
+            "type": "list<model:BookLevel>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "asks",
+            "type": "list<model:BookLevel>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "spread_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "weighted_bid_depth",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "weighted_ask_depth",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "dom_imbalance",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "microprice_ticks",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "mbo_available",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "queue_metrics",
+            "type": "dict<str,float>"
+          }
+        ],
+        "frozen": true
+      },
+      "DataQualityFlags": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "gaps",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "out_of_order",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "impossible_book",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "negative_size",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "crossed_book",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "stale_stream",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "unknown_contract",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "missing_snapshot",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "timestamp_regression",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "duplicated_event",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "checksum_mismatch",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "True",
+            "name": "trade_safe",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "factory:list",
+            "name": "reasons",
+            "type": "list<str>"
+          }
+        ],
+        "frozen": true
+      },
+      "DecisionSnapshot": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "timestamp_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "setup_type",
+            "type": "union<enum:SetupType,null>"
+          },
+          {
+            "constraints": [],
+            "default": "enum:FLAT",
+            "name": "direction",
+            "type": "enum:Direction"
+          },
+          {
+            "constraints": [],
+            "default": "''",
+            "name": "state",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "'UNSET'",
+            "name": "decision",
+            "type": "literal<'ENTER','NO_TRADE','UNSET'>"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "evidence",
+            "type": "dict<str,any>"
+          },
+          {
+            "constraints": [],
+            "default": "''",
+            "name": "parameter_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "''",
+            "name": "config_hash",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "market_feature_sha256",
+            "type": "union<null,str>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "trade_safe",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "'MECHANICAL'",
+            "name": "provider",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "ai_enabled",
+            "type": "literal<False>"
+          }
+        ],
+        "frozen": true
+      },
+      "ExecutionIntent": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "intent_id",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "candidate_id",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "timestamp_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "direction",
+            "type": "enum:Direction"
+          },
+          {
+            "constraints": [],
+            "default": "enum:ENTRY",
+            "name": "purpose",
+            "type": "enum:OrderPurpose"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "order_type",
+            "type": "enum:OrderType"
+          },
+          {
+            "constraints": [
+              "gt=0"
+            ],
+            "default": "<required>",
+            "name": "quantity",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "limit_price_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "trigger_price_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "reference_price_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "stop_price_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "target_price_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "10",
+            "name": "max_slippage_ticks",
+            "type": "int"
+          }
+        ],
+        "frozen": true
+      },
+      "ExecutionReport": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "intent_id",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "status",
+            "type": "enum:OrderStatus"
+          },
+          {
+            "constraints": [],
+            "default": "factory:list",
+            "name": "fills",
+            "type": "list<model:Fill>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "rejected_reason",
+            "type": "union<null,str>"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "latency_ms",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "total_quantity",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "filled_quantity",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "average_fill_price_ticks",
+            "type": "union<decimal,null>"
+          }
+        ],
+        "frozen": true
+      },
+      "Fill": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "timestamp_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "price_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [
+              "gt=0"
+            ],
+            "default": "<required>",
+            "name": "quantity",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "Decimal('0')",
+            "name": "fee",
+            "type": "decimal"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "slippage_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "'TAKER'",
+            "name": "liquidity",
+            "type": "literal<'MAKER','TAKER'>"
+          }
+        ],
+        "frozen": true
+      },
+      "FootprintLevel": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "price_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "bid_executed",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "ask_executed",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "delta",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "diagonal_buy_ratio",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "diagonal_sell_ratio",
+            "type": "union<float,null>"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "buy_imbalance",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "sell_imbalance",
+            "type": "bool"
+          }
+        ],
+        "frozen": true
+      },
+      "FootprintSnapshot": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "ts_event_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "window_start_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "window_end_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "levels",
+            "type": "list<model:FootprintLevel>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "total_volume",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "delta",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "stacked_buy_imbalance_levels",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "stacked_sell_imbalance_levels",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "unfinished_auction_evidence",
+            "type": "dict<str,float>"
+          }
+        ],
+        "frozen": true
+      },
+      "MarketEvent": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "<required>",
+            "name": "ts_event_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "None",
+            "name": "ts_recv_ns",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "<required>",
+            "name": "sequence",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "instrument_id",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "action",
+            "type": "enum:EventAction"
+          },
+          {
+            "constraints": [],
+            "default": "enum:NONE",
+            "name": "side",
+            "type": "enum:Side"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "price_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "0",
+            "name": "size",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "order_id",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "channel_id",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "provider_flags",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "'synthetic'",
+            "name": "source",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "False",
+            "name": "snapshot_complete",
+            "type": "bool"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "metadata",
+            "type": "dict<str,any>"
+          }
+        ],
+        "frozen": true
+      },
+      "MarketFeatureSnapshot": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "timestamp_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "<required>",
+            "name": "event_index",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "structure_period_index",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "tick_size",
+            "type": "decimal"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "session",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "trading_day",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "best_bid_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "best_ask_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "last_trade_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "enum:FLAT",
+            "name": "structure_direction",
+            "type": "enum:Direction"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "structure_features",
+            "type": "dict<str,float>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "auction",
+            "type": "model:AuctionFeatureSnapshot"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "profiles",
+            "type": "list<model:VolumeProfileSnapshot>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "impulse_profile",
+            "type": "union<model:VolumeProfileSnapshot,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "reclaim_profile",
+            "type": "union<model:VolumeProfileSnapshot,null>"
+          },
+          {
+            "constraints": [],
+            "default": "factory:list",
+            "name": "balance_areas",
+            "type": "list<model:BalanceArea>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "relevant_lvn_zones",
+            "type": "list<model:ProfileZone>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "relevant_hvn_zones",
+            "type": "list<model:ProfileZone>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "relevant_poc_candidates",
+            "type": "list<int>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "delta",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "cvd",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "rolling_delta",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "cvd_slope",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "cvd_acceleration",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "cvd_slope_normalized",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "delta_zscore",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "big_buy_print_percentile",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "big_sell_print_percentile",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "aggression_window_low_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "aggression_window_high_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "absorption_score",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "rejection_speed",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "0.0",
+            "name": "pulling_stacking_score",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "enum:FLAT",
+            "name": "directional_aggression",
+            "type": "enum:Direction"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "footprint",
+            "type": "model:FootprintSnapshot"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "book",
+            "type": "union<model:BookSnapshot,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "aggression_metrics",
+            "type": "dict<str,float>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "absorption_metrics",
+            "type": "dict<str,float>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "big_print_metrics",
+            "type": "dict<str,float>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "dom_depth_metrics",
+            "type": "dict<str,float>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "liquidity_pulling_stacking",
+            "type": "dict<str,float>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "data_quality",
+            "type": "model:DataQualityFlags"
+          },
+          {
+            "constraints": [
+              "ge=0.0",
+              "le=1.0"
+            ],
+            "default": "1.0",
+            "name": "data_quality_score",
+            "type": "float"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "0",
+            "name": "stale_ms",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "stale_data_flags",
+            "type": "dict<str,bool>"
+          },
+          {
+            "constraints": [],
+            "default": "None",
+            "name": "news_day",
+            "type": "union<bool,null>"
+          },
+          {
+            "constraints": [],
+            "default": "'NORMAL'",
+            "name": "volatility_regime",
+            "type": "literal<'HIGH','LOW','NORMAL'>"
+          },
+          {
+            "constraints": [],
+            "default": "'TRANSITION'",
+            "name": "market_regime",
+            "type": "literal<'BALANCE','TRANSITION','TREND'>"
+          },
+          {
+            "constraints": [],
+            "default": "factory:dict",
+            "name": "provenance",
+            "type": "dict<str,str>"
+          }
+        ],
+        "frozen": true
+      },
+      "ProfileZone": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "low_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "high_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "relative_volume_metric",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "neighboring_volume_ratio",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "width_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "1.0",
+            "name": "volume_to_median_ratio",
+            "type": "float"
+          },
+          {
+            "constraints": [],
+            "default": "1",
+            "name": "persistence",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "age_events",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "0",
+            "name": "retest_count",
+            "type": "int"
+          }
+        ],
+        "frozen": true
+      },
+      "TradeCandidate": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "candidate_id",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "setup_type",
+            "type": "enum:SetupType"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "direction",
+            "type": "enum:Direction"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "timestamp_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "event_index",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "entry_reference_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "stop_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "target_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "evidence",
+            "type": "dict<str,any>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "decision_snapshot",
+            "type": "model:DecisionSnapshot"
+          }
+        ],
+        "frozen": true
+      },
+      "TradePrint": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "<required>",
+            "name": "ts_event_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [
+              "ge=0"
+            ],
+            "default": "<required>",
+            "name": "sequence",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "price_ticks",
+            "type": "int"
+          },
+          {
+            "constraints": [
+              "gt=0"
+            ],
+            "default": "<required>",
+            "name": "size",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "aggressor_side",
+            "type": "enum:Side"
+          },
+          {
+            "constraints": [],
+            "default": "'provider'",
+            "name": "initiator_source",
+            "type": "literal<'provider','quote_fallback','unknown'>"
+          }
+        ],
+        "frozen": true
+      },
+      "VolumeProfileSnapshot": {
+        "extra": "forbid",
+        "fields": [
+          {
+            "constraints": [],
+            "default": "'FABIO_MECHANICAL_V1'",
+            "name": "schema_version",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "ts_event_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "instrument",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "active_contract",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "profile_kind",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "start_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "end_ns",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "poc_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "vah_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "val_ticks",
+            "type": "union<int,null>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "hvn_zones",
+            "type": "list<model:ProfileZone>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "lvn_zones",
+            "type": "list<model:ProfileZone>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "volume_by_price",
+            "type": "dict<int,int>"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "profile_shape",
+            "type": "str"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "total_volume",
+            "type": "int"
+          },
+          {
+            "constraints": [],
+            "default": "<required>",
+            "name": "value_area_fraction",
+            "type": "float"
+          }
+        ],
+        "frozen": true
+      }
+    },
+    "top_level_models": [
+      "MarketEvent",
+      "TradePrint",
+      "BookSnapshot",
+      "FootprintSnapshot",
+      "VolumeProfileSnapshot",
+      "BalanceArea",
+      "AuctionFeatureSnapshot",
+      "DataQualityFlags",
+      "MarketFeatureSnapshot",
+      "DecisionSnapshot",
+      "TradeCandidate",
+      "ExecutionIntent",
+      "ExecutionReport"
+    ]
+  },
+  "json_schema": {
+    "AuctionFeatureSnapshot": {
+      "$defs": {
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "MarketState": {
+          "enum": [
+            "BALANCE",
+            "IMBALANCE_UP",
+            "IMBALANCE_DOWN",
+            "TRANSITION",
+            "UNKNOWN"
+          ],
+          "title": "MarketState",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "acceptance_events": {
+          "default": 0,
+          "title": "Acceptance Events",
+          "type": "integer"
+        },
+        "acceptance_outside_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acceptance Outside Value"
+        },
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "balance_directional_efficiency": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Directional Efficiency"
+        },
+        "balance_high_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance High Ticks"
+        },
+        "balance_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Id"
+        },
+        "balance_low_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Low Ticks"
+        },
+        "balance_poc_migration_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Poc Migration Ticks"
+        },
+        "balance_poc_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Poc Ticks"
+        },
+        "balance_range_high_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Range High Ticks"
+        },
+        "balance_range_low_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Range Low Ticks"
+        },
+        "balance_value_overlap": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Value Overlap"
+        },
+        "balanced": {
+          "default": false,
+          "title": "Balanced",
+          "type": "boolean"
+        },
+        "breakout_distance_ticks": {
+          "default": 0.0,
+          "title": "Breakout Distance Ticks",
+          "type": "number"
+        },
+        "breakout_side": {
+          "$ref": "#/$defs/Direction",
+          "default": "FLAT"
+        },
+        "cvd_persistence": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cvd Persistence"
+        },
+        "delta_persistence": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delta Persistence"
+        },
+        "directional_efficiency": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Directional Efficiency"
+        },
+        "displacement_zscore": {
+          "default": 0.0,
+          "title": "Displacement Zscore",
+          "type": "number"
+        },
+        "excursion_active": {
+          "default": false,
+          "title": "Excursion Active",
+          "type": "boolean"
+        },
+        "failed_auction": {
+          "default": false,
+          "title": "Failed Auction",
+          "type": "boolean"
+        },
+        "failed_auction_extreme_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failed Auction Extreme Ticks"
+        },
+        "impulse_efficiency": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse Efficiency"
+        },
+        "impulse_high_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse High Ticks"
+        },
+        "impulse_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse Id"
+        },
+        "impulse_low_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse Low Ticks"
+        },
+        "impulse_ticks": {
+          "default": 0.0,
+          "title": "Impulse Ticks",
+          "type": "number"
+        },
+        "impulse_velocity_ticks_per_event": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse Velocity Ticks Per Event"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "out_of_balance": {
+          "default": false,
+          "title": "Out Of Balance",
+          "type": "boolean"
+        },
+        "poc_migration_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Poc Migration Ticks"
+        },
+        "pullback_depth_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pullback Depth Fraction"
+        },
+        "range_expansion_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Range Expansion Ratio"
+        },
+        "raw": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Raw",
+          "type": "object"
+        },
+        "reclaim_inside_balance": {
+          "default": false,
+          "title": "Reclaim Inside Balance",
+          "type": "boolean"
+        },
+        "reclaim_leg_high_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reclaim Leg High Ticks"
+        },
+        "reclaim_leg_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reclaim Leg Id"
+        },
+        "reclaim_leg_low_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reclaim Leg Low Ticks"
+        },
+        "reclaim_leg_ticks": {
+          "default": 0.0,
+          "title": "Reclaim Leg Ticks",
+          "type": "number"
+        },
+        "return_to_value_frequency": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Return To Value Frequency"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "state_candidate": {
+          "$ref": "#/$defs/MarketState"
+        },
+        "structure_break": {
+          "default": false,
+          "title": "Structure Break",
+          "type": "boolean"
+        },
+        "time_inside_value_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Inside Value Fraction"
+        },
+        "time_outside_value_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Outside Value Fraction"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "vah_migration_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Vah Migration Ticks"
+        },
+        "val_migration_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Val Migration Ticks"
+        },
+        "value_area_overlap": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value Area Overlap"
+        },
+        "vwap_slope_ticks_per_event": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Vwap Slope Ticks Per Event"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "instrument",
+        "active_contract",
+        "state_candidate"
+      ],
+      "title": "AuctionFeatureSnapshot",
+      "type": "object"
+    },
+    "BalanceArea": {
+      "additionalProperties": false,
+      "description": "A completed or developing balance (value) area. Its POC is a target candidate.",
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "balance_id": {
+          "title": "Balance Id",
+          "type": "string"
+        },
+        "end_ns": {
+          "title": "End Ns",
+          "type": "integer"
+        },
+        "high_ticks": {
+          "title": "High Ticks",
+          "type": "integer"
+        },
+        "low_ticks": {
+          "title": "Low Ticks",
+          "type": "integer"
+        },
+        "poc_ticks": {
+          "title": "Poc Ticks",
+          "type": "integer"
+        },
+        "range_high_ticks": {
+          "title": "Range High Ticks",
+          "type": "integer"
+        },
+        "range_low_ticks": {
+          "title": "Range Low Ticks",
+          "type": "integer"
+        },
+        "source": {
+          "enum": [
+            "intraday_balance",
+            "prior_session"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "start_ns": {
+          "title": "Start Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "balance_id",
+        "source",
+        "active_contract",
+        "low_ticks",
+        "high_ticks",
+        "poc_ticks",
+        "range_low_ticks",
+        "range_high_ticks",
+        "start_ns",
+        "end_ns"
+      ],
+      "title": "BalanceArea",
+      "type": "object"
+    },
+    "BookSnapshot": {
+      "$defs": {
+        "BookLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "order_count": {
+              "minimum": 0,
+              "title": "Order Count",
+              "type": "integer"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "size": {
+              "minimum": 0,
+              "title": "Size",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "price_ticks",
+            "size",
+            "order_count"
+          ],
+          "title": "BookLevel",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "asks": {
+          "items": {
+            "$ref": "#/$defs/BookLevel"
+          },
+          "title": "Asks",
+          "type": "array"
+        },
+        "best_ask": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BookLevel"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best_bid": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BookLevel"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bids": {
+          "items": {
+            "$ref": "#/$defs/BookLevel"
+          },
+          "title": "Bids",
+          "type": "array"
+        },
+        "dom_imbalance": {
+          "title": "Dom Imbalance",
+          "type": "number"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "mbo_available": {
+          "default": false,
+          "title": "Mbo Available",
+          "type": "boolean"
+        },
+        "microprice_ticks": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Microprice Ticks"
+        },
+        "queue_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Queue Metrics",
+          "type": "object"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sequence": {
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "spread_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Spread Ticks"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "weighted_ask_depth": {
+          "title": "Weighted Ask Depth",
+          "type": "number"
+        },
+        "weighted_bid_depth": {
+          "title": "Weighted Bid Depth",
+          "type": "number"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "sequence",
+        "instrument",
+        "active_contract",
+        "best_bid",
+        "best_ask",
+        "bids",
+        "asks",
+        "spread_ticks",
+        "weighted_bid_depth",
+        "weighted_ask_depth",
+        "dom_imbalance"
+      ],
+      "title": "BookSnapshot",
+      "type": "object"
+    },
+    "DataQualityFlags": {
+      "additionalProperties": false,
+      "properties": {
+        "checksum_mismatch": {
+          "default": false,
+          "title": "Checksum Mismatch",
+          "type": "boolean"
+        },
+        "crossed_book": {
+          "default": false,
+          "title": "Crossed Book",
+          "type": "boolean"
+        },
+        "duplicated_event": {
+          "default": false,
+          "title": "Duplicated Event",
+          "type": "boolean"
+        },
+        "gaps": {
+          "default": false,
+          "title": "Gaps",
+          "type": "boolean"
+        },
+        "impossible_book": {
+          "default": false,
+          "title": "Impossible Book",
+          "type": "boolean"
+        },
+        "missing_snapshot": {
+          "default": false,
+          "title": "Missing Snapshot",
+          "type": "boolean"
+        },
+        "negative_size": {
+          "default": false,
+          "title": "Negative Size",
+          "type": "boolean"
+        },
+        "out_of_order": {
+          "default": false,
+          "title": "Out Of Order",
+          "type": "boolean"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        },
+        "stale_stream": {
+          "default": false,
+          "title": "Stale Stream",
+          "type": "boolean"
+        },
+        "timestamp_regression": {
+          "default": false,
+          "title": "Timestamp Regression",
+          "type": "boolean"
+        },
+        "trade_safe": {
+          "default": true,
+          "title": "Trade Safe",
+          "type": "boolean"
+        },
+        "unknown_contract": {
+          "default": false,
+          "title": "Unknown Contract",
+          "type": "boolean"
+        }
+      },
+      "title": "DataQualityFlags",
+      "type": "object"
+    },
+    "DecisionSnapshot": {
+      "$defs": {
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "SetupType": {
+          "enum": [
+            "TREND",
+            "MEAN_REVERSION"
+          ],
+          "title": "SetupType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "ai_enabled": {
+          "const": false,
+          "default": false,
+          "enum": [
+            false
+          ],
+          "title": "Ai Enabled",
+          "type": "boolean"
+        },
+        "config_hash": {
+          "default": "",
+          "title": "Config Hash",
+          "type": "string"
+        },
+        "decision": {
+          "default": "UNSET",
+          "enum": [
+            "UNSET",
+            "ENTER",
+            "NO_TRADE"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "direction": {
+          "$ref": "#/$defs/Direction",
+          "default": "FLAT"
+        },
+        "evidence": {
+          "title": "Evidence",
+          "type": "object"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "market_feature_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Market Feature Sha256"
+        },
+        "parameter_version": {
+          "default": "",
+          "title": "Parameter Version",
+          "type": "string"
+        },
+        "provider": {
+          "default": "MECHANICAL",
+          "title": "Provider",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "setup_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SetupType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "state": {
+          "default": "",
+          "title": "State",
+          "type": "string"
+        },
+        "timestamp_ns": {
+          "title": "Timestamp Ns",
+          "type": "integer"
+        },
+        "trade_safe": {
+          "title": "Trade Safe",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "timestamp_ns",
+        "instrument",
+        "active_contract",
+        "trade_safe"
+      ],
+      "title": "DecisionSnapshot",
+      "type": "object"
+    },
+    "ExecutionIntent": {
+      "$defs": {
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "OrderPurpose": {
+          "enum": [
+            "ENTRY",
+            "STOP",
+            "TARGET",
+            "EXIT"
+          ],
+          "title": "OrderPurpose",
+          "type": "string"
+        },
+        "OrderType": {
+          "enum": [
+            "MARKET",
+            "LIMIT",
+            "STOP"
+          ],
+          "title": "OrderType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "candidate_id": {
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "direction": {
+          "$ref": "#/$defs/Direction"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "intent_id": {
+          "title": "Intent Id",
+          "type": "string"
+        },
+        "limit_price_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Limit Price Ticks"
+        },
+        "max_slippage_ticks": {
+          "default": 10,
+          "minimum": 0,
+          "title": "Max Slippage Ticks",
+          "type": "integer"
+        },
+        "order_type": {
+          "$ref": "#/$defs/OrderType"
+        },
+        "purpose": {
+          "$ref": "#/$defs/OrderPurpose",
+          "default": "ENTRY"
+        },
+        "quantity": {
+          "exclusiveMinimum": 0,
+          "title": "Quantity",
+          "type": "integer"
+        },
+        "reference_price_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference Price Ticks"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stop_price_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stop Price Ticks"
+        },
+        "target_price_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Price Ticks"
+        },
+        "timestamp_ns": {
+          "title": "Timestamp Ns",
+          "type": "integer"
+        },
+        "trigger_price_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Trigger Price Ticks"
+        }
+      },
+      "required": [
+        "intent_id",
+        "candidate_id",
+        "timestamp_ns",
+        "instrument",
+        "active_contract",
+        "direction",
+        "order_type",
+        "quantity"
+      ],
+      "title": "ExecutionIntent",
+      "type": "object"
+    },
+    "ExecutionReport": {
+      "$defs": {
+        "Fill": {
+          "additionalProperties": false,
+          "properties": {
+            "fee": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Fee"
+            },
+            "liquidity": {
+              "default": "TAKER",
+              "enum": [
+                "TAKER",
+                "MAKER"
+              ],
+              "title": "Liquidity",
+              "type": "string"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "quantity": {
+              "exclusiveMinimum": 0,
+              "title": "Quantity",
+              "type": "integer"
+            },
+            "slippage_ticks": {
+              "default": 0,
+              "title": "Slippage Ticks",
+              "type": "integer"
+            },
+            "timestamp_ns": {
+              "title": "Timestamp Ns",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "timestamp_ns",
+            "price_ticks",
+            "quantity"
+          ],
+          "title": "Fill",
+          "type": "object"
+        },
+        "OrderStatus": {
+          "enum": [
+            "NEW",
+            "PARTIAL",
+            "FILLED",
+            "REJECTED",
+            "CANCELLED"
+          ],
+          "title": "OrderStatus",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "average_fill_price_ticks": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Average Fill Price Ticks"
+        },
+        "filled_quantity": {
+          "default": 0,
+          "title": "Filled Quantity",
+          "type": "integer"
+        },
+        "fills": {
+          "items": {
+            "$ref": "#/$defs/Fill"
+          },
+          "title": "Fills",
+          "type": "array"
+        },
+        "intent_id": {
+          "title": "Intent Id",
+          "type": "string"
+        },
+        "latency_ms": {
+          "default": 0,
+          "title": "Latency Ms",
+          "type": "integer"
+        },
+        "rejected_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rejected Reason"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/OrderStatus"
+        },
+        "total_quantity": {
+          "default": 0,
+          "title": "Total Quantity",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "intent_id",
+        "status"
+      ],
+      "title": "ExecutionReport",
+      "type": "object"
+    },
+    "FootprintSnapshot": {
+      "$defs": {
+        "FootprintLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "ask_executed": {
+              "default": 0,
+              "title": "Ask Executed",
+              "type": "integer"
+            },
+            "bid_executed": {
+              "default": 0,
+              "title": "Bid Executed",
+              "type": "integer"
+            },
+            "buy_imbalance": {
+              "default": false,
+              "title": "Buy Imbalance",
+              "type": "boolean"
+            },
+            "delta": {
+              "default": 0,
+              "title": "Delta",
+              "type": "integer"
+            },
+            "diagonal_buy_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Buy Ratio"
+            },
+            "diagonal_sell_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Sell Ratio"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "sell_imbalance": {
+              "default": false,
+              "title": "Sell Imbalance",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "price_ticks"
+          ],
+          "title": "FootprintLevel",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "delta": {
+          "title": "Delta",
+          "type": "integer"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "levels": {
+          "items": {
+            "$ref": "#/$defs/FootprintLevel"
+          },
+          "title": "Levels",
+          "type": "array"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stacked_buy_imbalance_levels": {
+          "default": 0,
+          "title": "Stacked Buy Imbalance Levels",
+          "type": "integer"
+        },
+        "stacked_sell_imbalance_levels": {
+          "default": 0,
+          "title": "Stacked Sell Imbalance Levels",
+          "type": "integer"
+        },
+        "total_volume": {
+          "title": "Total Volume",
+          "type": "integer"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "unfinished_auction_evidence": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Unfinished Auction Evidence",
+          "type": "object"
+        },
+        "window_end_ns": {
+          "title": "Window End Ns",
+          "type": "integer"
+        },
+        "window_start_ns": {
+          "title": "Window Start Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "instrument",
+        "active_contract",
+        "window_start_ns",
+        "window_end_ns",
+        "levels",
+        "total_volume",
+        "delta"
+      ],
+      "title": "FootprintSnapshot",
+      "type": "object"
+    },
+    "MarketEvent": {
+      "$defs": {
+        "EventAction": {
+          "enum": [
+            "ADD",
+            "CANCEL",
+            "MODIFY",
+            "FILL",
+            "TRADE",
+            "CLEAR",
+            "SNAPSHOT",
+            "SESSION_BOUNDARY",
+            "CONTRACT_ROLL",
+            "NONE"
+          ],
+          "title": "EventAction",
+          "type": "string"
+        },
+        "Side": {
+          "description": "Book side. For TRADE events the side is the AGGRESSOR side (BID = buyer lifted the ask).",
+          "enum": [
+            "BID",
+            "ASK",
+            "NONE"
+          ],
+          "title": "Side",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "$ref": "#/$defs/EventAction"
+        },
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "channel_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Channel Id"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "instrument_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Instrument Id"
+        },
+        "metadata": {
+          "title": "Metadata",
+          "type": "object"
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Order Id"
+        },
+        "price_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Price Ticks"
+        },
+        "provider_flags": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Flags"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sequence": {
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "side": {
+          "$ref": "#/$defs/Side",
+          "default": "NONE"
+        },
+        "size": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Size",
+          "type": "integer"
+        },
+        "snapshot_complete": {
+          "default": false,
+          "title": "Snapshot Complete",
+          "type": "boolean"
+        },
+        "source": {
+          "default": "synthetic",
+          "title": "Source",
+          "type": "string"
+        },
+        "ts_event_ns": {
+          "minimum": 0,
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "ts_recv_ns": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ts Recv Ns"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "sequence",
+        "instrument",
+        "active_contract",
+        "action"
+      ],
+      "title": "MarketEvent",
+      "type": "object"
+    },
+    "MarketFeatureSnapshot": {
+      "$defs": {
+        "AuctionFeatureSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "acceptance_events": {
+              "default": 0,
+              "title": "Acceptance Events",
+              "type": "integer"
+            },
+            "acceptance_outside_value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Acceptance Outside Value"
+            },
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "balance_directional_efficiency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Directional Efficiency"
+            },
+            "balance_high_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance High Ticks"
+            },
+            "balance_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Id"
+            },
+            "balance_low_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Low Ticks"
+            },
+            "balance_poc_migration_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Poc Migration Ticks"
+            },
+            "balance_poc_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Poc Ticks"
+            },
+            "balance_range_high_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Range High Ticks"
+            },
+            "balance_range_low_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Range Low Ticks"
+            },
+            "balance_value_overlap": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Balance Value Overlap"
+            },
+            "balanced": {
+              "default": false,
+              "title": "Balanced",
+              "type": "boolean"
+            },
+            "breakout_distance_ticks": {
+              "default": 0.0,
+              "title": "Breakout Distance Ticks",
+              "type": "number"
+            },
+            "breakout_side": {
+              "$ref": "#/$defs/Direction",
+              "default": "FLAT"
+            },
+            "cvd_persistence": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Cvd Persistence"
+            },
+            "delta_persistence": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Delta Persistence"
+            },
+            "directional_efficiency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Directional Efficiency"
+            },
+            "displacement_zscore": {
+              "default": 0.0,
+              "title": "Displacement Zscore",
+              "type": "number"
+            },
+            "excursion_active": {
+              "default": false,
+              "title": "Excursion Active",
+              "type": "boolean"
+            },
+            "failed_auction": {
+              "default": false,
+              "title": "Failed Auction",
+              "type": "boolean"
+            },
+            "failed_auction_extreme_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Failed Auction Extreme Ticks"
+            },
+            "impulse_efficiency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse Efficiency"
+            },
+            "impulse_high_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse High Ticks"
+            },
+            "impulse_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse Id"
+            },
+            "impulse_low_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse Low Ticks"
+            },
+            "impulse_ticks": {
+              "default": 0.0,
+              "title": "Impulse Ticks",
+              "type": "number"
+            },
+            "impulse_velocity_ticks_per_event": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse Velocity Ticks Per Event"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "out_of_balance": {
+              "default": false,
+              "title": "Out Of Balance",
+              "type": "boolean"
+            },
+            "poc_migration_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Poc Migration Ticks"
+            },
+            "pullback_depth_fraction": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Pullback Depth Fraction"
+            },
+            "range_expansion_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Range Expansion Ratio"
+            },
+            "raw": {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "title": "Raw",
+              "type": "object"
+            },
+            "reclaim_inside_balance": {
+              "default": false,
+              "title": "Reclaim Inside Balance",
+              "type": "boolean"
+            },
+            "reclaim_leg_high_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Reclaim Leg High Ticks"
+            },
+            "reclaim_leg_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Reclaim Leg Id"
+            },
+            "reclaim_leg_low_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Reclaim Leg Low Ticks"
+            },
+            "reclaim_leg_ticks": {
+              "default": 0.0,
+              "title": "Reclaim Leg Ticks",
+              "type": "number"
+            },
+            "return_to_value_frequency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Return To Value Frequency"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "state_candidate": {
+              "$ref": "#/$defs/MarketState"
+            },
+            "structure_break": {
+              "default": false,
+              "title": "Structure Break",
+              "type": "boolean"
+            },
+            "time_inside_value_fraction": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Time Inside Value Fraction"
+            },
+            "time_outside_value_fraction": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Time Outside Value Fraction"
+            },
+            "ts_event_ns": {
+              "title": "Ts Event Ns",
+              "type": "integer"
+            },
+            "vah_migration_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Vah Migration Ticks"
+            },
+            "val_migration_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Val Migration Ticks"
+            },
+            "value_area_overlap": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Value Area Overlap"
+            },
+            "vwap_slope_ticks_per_event": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Vwap Slope Ticks Per Event"
+            }
+          },
+          "required": [
+            "ts_event_ns",
+            "instrument",
+            "active_contract",
+            "state_candidate"
+          ],
+          "title": "AuctionFeatureSnapshot",
+          "type": "object"
+        },
+        "BalanceArea": {
+          "additionalProperties": false,
+          "description": "A completed or developing balance (value) area. Its POC is a target candidate.",
+          "properties": {
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "balance_id": {
+              "title": "Balance Id",
+              "type": "string"
+            },
+            "end_ns": {
+              "title": "End Ns",
+              "type": "integer"
+            },
+            "high_ticks": {
+              "title": "High Ticks",
+              "type": "integer"
+            },
+            "low_ticks": {
+              "title": "Low Ticks",
+              "type": "integer"
+            },
+            "poc_ticks": {
+              "title": "Poc Ticks",
+              "type": "integer"
+            },
+            "range_high_ticks": {
+              "title": "Range High Ticks",
+              "type": "integer"
+            },
+            "range_low_ticks": {
+              "title": "Range Low Ticks",
+              "type": "integer"
+            },
+            "source": {
+              "enum": [
+                "intraday_balance",
+                "prior_session"
+              ],
+              "title": "Source",
+              "type": "string"
+            },
+            "start_ns": {
+              "title": "Start Ns",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "balance_id",
+            "source",
+            "active_contract",
+            "low_ticks",
+            "high_ticks",
+            "poc_ticks",
+            "range_low_ticks",
+            "range_high_ticks",
+            "start_ns",
+            "end_ns"
+          ],
+          "title": "BalanceArea",
+          "type": "object"
+        },
+        "BookLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "order_count": {
+              "minimum": 0,
+              "title": "Order Count",
+              "type": "integer"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "size": {
+              "minimum": 0,
+              "title": "Size",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "price_ticks",
+            "size",
+            "order_count"
+          ],
+          "title": "BookLevel",
+          "type": "object"
+        },
+        "BookSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "asks": {
+              "items": {
+                "$ref": "#/$defs/BookLevel"
+              },
+              "title": "Asks",
+              "type": "array"
+            },
+            "best_ask": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/BookLevel"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "best_bid": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/BookLevel"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "bids": {
+              "items": {
+                "$ref": "#/$defs/BookLevel"
+              },
+              "title": "Bids",
+              "type": "array"
+            },
+            "dom_imbalance": {
+              "title": "Dom Imbalance",
+              "type": "number"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "mbo_available": {
+              "default": false,
+              "title": "Mbo Available",
+              "type": "boolean"
+            },
+            "microprice_ticks": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Microprice Ticks"
+            },
+            "queue_metrics": {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "title": "Queue Metrics",
+              "type": "object"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "sequence": {
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "spread_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Spread Ticks"
+            },
+            "ts_event_ns": {
+              "title": "Ts Event Ns",
+              "type": "integer"
+            },
+            "weighted_ask_depth": {
+              "title": "Weighted Ask Depth",
+              "type": "number"
+            },
+            "weighted_bid_depth": {
+              "title": "Weighted Bid Depth",
+              "type": "number"
+            }
+          },
+          "required": [
+            "ts_event_ns",
+            "sequence",
+            "instrument",
+            "active_contract",
+            "best_bid",
+            "best_ask",
+            "bids",
+            "asks",
+            "spread_ticks",
+            "weighted_bid_depth",
+            "weighted_ask_depth",
+            "dom_imbalance"
+          ],
+          "title": "BookSnapshot",
+          "type": "object"
+        },
+        "DataQualityFlags": {
+          "additionalProperties": false,
+          "properties": {
+            "checksum_mismatch": {
+              "default": false,
+              "title": "Checksum Mismatch",
+              "type": "boolean"
+            },
+            "crossed_book": {
+              "default": false,
+              "title": "Crossed Book",
+              "type": "boolean"
+            },
+            "duplicated_event": {
+              "default": false,
+              "title": "Duplicated Event",
+              "type": "boolean"
+            },
+            "gaps": {
+              "default": false,
+              "title": "Gaps",
+              "type": "boolean"
+            },
+            "impossible_book": {
+              "default": false,
+              "title": "Impossible Book",
+              "type": "boolean"
+            },
+            "missing_snapshot": {
+              "default": false,
+              "title": "Missing Snapshot",
+              "type": "boolean"
+            },
+            "negative_size": {
+              "default": false,
+              "title": "Negative Size",
+              "type": "boolean"
+            },
+            "out_of_order": {
+              "default": false,
+              "title": "Out Of Order",
+              "type": "boolean"
+            },
+            "reasons": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Reasons",
+              "type": "array"
+            },
+            "stale_stream": {
+              "default": false,
+              "title": "Stale Stream",
+              "type": "boolean"
+            },
+            "timestamp_regression": {
+              "default": false,
+              "title": "Timestamp Regression",
+              "type": "boolean"
+            },
+            "trade_safe": {
+              "default": true,
+              "title": "Trade Safe",
+              "type": "boolean"
+            },
+            "unknown_contract": {
+              "default": false,
+              "title": "Unknown Contract",
+              "type": "boolean"
+            }
+          },
+          "title": "DataQualityFlags",
+          "type": "object"
+        },
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "FootprintLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "ask_executed": {
+              "default": 0,
+              "title": "Ask Executed",
+              "type": "integer"
+            },
+            "bid_executed": {
+              "default": 0,
+              "title": "Bid Executed",
+              "type": "integer"
+            },
+            "buy_imbalance": {
+              "default": false,
+              "title": "Buy Imbalance",
+              "type": "boolean"
+            },
+            "delta": {
+              "default": 0,
+              "title": "Delta",
+              "type": "integer"
+            },
+            "diagonal_buy_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Buy Ratio"
+            },
+            "diagonal_sell_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Sell Ratio"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "sell_imbalance": {
+              "default": false,
+              "title": "Sell Imbalance",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "price_ticks"
+          ],
+          "title": "FootprintLevel",
+          "type": "object"
+        },
+        "FootprintSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "delta": {
+              "title": "Delta",
+              "type": "integer"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "levels": {
+              "items": {
+                "$ref": "#/$defs/FootprintLevel"
+              },
+              "title": "Levels",
+              "type": "array"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "stacked_buy_imbalance_levels": {
+              "default": 0,
+              "title": "Stacked Buy Imbalance Levels",
+              "type": "integer"
+            },
+            "stacked_sell_imbalance_levels": {
+              "default": 0,
+              "title": "Stacked Sell Imbalance Levels",
+              "type": "integer"
+            },
+            "total_volume": {
+              "title": "Total Volume",
+              "type": "integer"
+            },
+            "ts_event_ns": {
+              "title": "Ts Event Ns",
+              "type": "integer"
+            },
+            "unfinished_auction_evidence": {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "title": "Unfinished Auction Evidence",
+              "type": "object"
+            },
+            "window_end_ns": {
+              "title": "Window End Ns",
+              "type": "integer"
+            },
+            "window_start_ns": {
+              "title": "Window Start Ns",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "ts_event_ns",
+            "instrument",
+            "active_contract",
+            "window_start_ns",
+            "window_end_ns",
+            "levels",
+            "total_volume",
+            "delta"
+          ],
+          "title": "FootprintSnapshot",
+          "type": "object"
+        },
+        "MarketState": {
+          "enum": [
+            "BALANCE",
+            "IMBALANCE_UP",
+            "IMBALANCE_DOWN",
+            "TRANSITION",
+            "UNKNOWN"
+          ],
+          "title": "MarketState",
+          "type": "string"
+        },
+        "ProfileZone": {
+          "additionalProperties": false,
+          "properties": {
+            "age_events": {
+              "default": 0,
+              "title": "Age Events",
+              "type": "integer"
+            },
+            "high_ticks": {
+              "title": "High Ticks",
+              "type": "integer"
+            },
+            "low_ticks": {
+              "title": "Low Ticks",
+              "type": "integer"
+            },
+            "neighboring_volume_ratio": {
+              "title": "Neighboring Volume Ratio",
+              "type": "number"
+            },
+            "persistence": {
+              "default": 1,
+              "title": "Persistence",
+              "type": "integer"
+            },
+            "relative_volume_metric": {
+              "title": "Relative Volume Metric",
+              "type": "number"
+            },
+            "retest_count": {
+              "default": 0,
+              "title": "Retest Count",
+              "type": "integer"
+            },
+            "volume_to_median_ratio": {
+              "default": 1.0,
+              "title": "Volume To Median Ratio",
+              "type": "number"
+            },
+            "width_ticks": {
+              "title": "Width Ticks",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "low_ticks",
+            "high_ticks",
+            "relative_volume_metric",
+            "neighboring_volume_ratio",
+            "width_ticks"
+          ],
+          "title": "ProfileZone",
+          "type": "object"
+        },
+        "VolumeProfileSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "end_ns": {
+              "title": "End Ns",
+              "type": "integer"
+            },
+            "hvn_zones": {
+              "items": {
+                "$ref": "#/$defs/ProfileZone"
+              },
+              "title": "Hvn Zones",
+              "type": "array"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "lvn_zones": {
+              "items": {
+                "$ref": "#/$defs/ProfileZone"
+              },
+              "title": "Lvn Zones",
+              "type": "array"
+            },
+            "poc_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Poc Ticks"
+            },
+            "profile_kind": {
+              "title": "Profile Kind",
+              "type": "string"
+            },
+            "profile_shape": {
+              "title": "Profile Shape",
+              "type": "string"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "start_ns": {
+              "title": "Start Ns",
+              "type": "integer"
+            },
+            "total_volume": {
+              "title": "Total Volume",
+              "type": "integer"
+            },
+            "ts_event_ns": {
+              "title": "Ts Event Ns",
+              "type": "integer"
+            },
+            "vah_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Vah Ticks"
+            },
+            "val_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Val Ticks"
+            },
+            "value_area_fraction": {
+              "title": "Value Area Fraction",
+              "type": "number"
+            },
+            "volume_by_price": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "title": "Volume By Price",
+              "type": "object"
+            }
+          },
+          "required": [
+            "ts_event_ns",
+            "instrument",
+            "active_contract",
+            "profile_kind",
+            "start_ns",
+            "end_ns",
+            "poc_ticks",
+            "vah_ticks",
+            "val_ticks",
+            "hvn_zones",
+            "lvn_zones",
+            "volume_by_price",
+            "profile_shape",
+            "total_volume",
+            "value_area_fraction"
+          ],
+          "title": "VolumeProfileSnapshot",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Sole strategy input. Produced only from information available at ``timestamp_ns``.",
+      "properties": {
+        "absorption_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Absorption Metrics",
+          "type": "object"
+        },
+        "absorption_score": {
+          "default": 0.0,
+          "title": "Absorption Score",
+          "type": "number"
+        },
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "aggression_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Aggression Metrics",
+          "type": "object"
+        },
+        "aggression_window_high_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aggression Window High Ticks"
+        },
+        "aggression_window_low_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aggression Window Low Ticks"
+        },
+        "auction": {
+          "$ref": "#/$defs/AuctionFeatureSnapshot"
+        },
+        "balance_areas": {
+          "items": {
+            "$ref": "#/$defs/BalanceArea"
+          },
+          "title": "Balance Areas",
+          "type": "array"
+        },
+        "best_ask_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Best Ask Ticks"
+        },
+        "best_bid_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Best Bid Ticks"
+        },
+        "big_buy_print_percentile": {
+          "default": 0.0,
+          "title": "Big Buy Print Percentile",
+          "type": "number"
+        },
+        "big_print_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Big Print Metrics",
+          "type": "object"
+        },
+        "big_sell_print_percentile": {
+          "default": 0.0,
+          "title": "Big Sell Print Percentile",
+          "type": "number"
+        },
+        "book": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BookSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "cvd": {
+          "title": "Cvd",
+          "type": "integer"
+        },
+        "cvd_acceleration": {
+          "title": "Cvd Acceleration",
+          "type": "number"
+        },
+        "cvd_slope": {
+          "title": "Cvd Slope",
+          "type": "number"
+        },
+        "cvd_slope_normalized": {
+          "default": 0.0,
+          "title": "Cvd Slope Normalized",
+          "type": "number"
+        },
+        "data_quality": {
+          "$ref": "#/$defs/DataQualityFlags"
+        },
+        "data_quality_score": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Data Quality Score",
+          "type": "number"
+        },
+        "delta": {
+          "title": "Delta",
+          "type": "integer"
+        },
+        "delta_zscore": {
+          "default": 0.0,
+          "title": "Delta Zscore",
+          "type": "number"
+        },
+        "directional_aggression": {
+          "$ref": "#/$defs/Direction",
+          "default": "FLAT"
+        },
+        "dom_depth_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Dom Depth Metrics",
+          "type": "object"
+        },
+        "event_index": {
+          "minimum": 0,
+          "title": "Event Index",
+          "type": "integer"
+        },
+        "footprint": {
+          "$ref": "#/$defs/FootprintSnapshot"
+        },
+        "impulse_profile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VolumeProfileSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "last_trade_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Trade Ticks"
+        },
+        "liquidity_pulling_stacking": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Liquidity Pulling Stacking",
+          "type": "object"
+        },
+        "market_regime": {
+          "default": "TRANSITION",
+          "enum": [
+            "BALANCE",
+            "TREND",
+            "TRANSITION"
+          ],
+          "title": "Market Regime",
+          "type": "string"
+        },
+        "news_day": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "News Day"
+        },
+        "profiles": {
+          "items": {
+            "$ref": "#/$defs/VolumeProfileSnapshot"
+          },
+          "title": "Profiles",
+          "type": "array"
+        },
+        "provenance": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Provenance",
+          "type": "object"
+        },
+        "pulling_stacking_score": {
+          "default": 0.0,
+          "title": "Pulling Stacking Score",
+          "type": "number"
+        },
+        "reclaim_profile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VolumeProfileSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "rejection_speed": {
+          "default": 0.0,
+          "title": "Rejection Speed",
+          "type": "number"
+        },
+        "relevant_hvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Relevant Hvn Zones",
+          "type": "array"
+        },
+        "relevant_lvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Relevant Lvn Zones",
+          "type": "array"
+        },
+        "relevant_poc_candidates": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Relevant Poc Candidates",
+          "type": "array"
+        },
+        "rolling_delta": {
+          "title": "Rolling Delta",
+          "type": "integer"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session": {
+          "title": "Session",
+          "type": "string"
+        },
+        "stale_data_flags": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "title": "Stale Data Flags",
+          "type": "object"
+        },
+        "stale_ms": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Stale Ms",
+          "type": "integer"
+        },
+        "structure_direction": {
+          "$ref": "#/$defs/Direction",
+          "default": "FLAT"
+        },
+        "structure_features": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Structure Features",
+          "type": "object"
+        },
+        "structure_period_index": {
+          "title": "Structure Period Index",
+          "type": "integer"
+        },
+        "tick_size": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Tick Size"
+        },
+        "timestamp_ns": {
+          "title": "Timestamp Ns",
+          "type": "integer"
+        },
+        "trading_day": {
+          "title": "Trading Day",
+          "type": "string"
+        },
+        "volatility_regime": {
+          "default": "NORMAL",
+          "enum": [
+            "LOW",
+            "NORMAL",
+            "HIGH"
+          ],
+          "title": "Volatility Regime",
+          "type": "string"
+        }
+      },
+      "required": [
+        "timestamp_ns",
+        "event_index",
+        "structure_period_index",
+        "instrument",
+        "active_contract",
+        "tick_size",
+        "session",
+        "trading_day",
+        "best_bid_ticks",
+        "best_ask_ticks",
+        "last_trade_ticks",
+        "auction",
+        "profiles",
+        "relevant_lvn_zones",
+        "relevant_hvn_zones",
+        "relevant_poc_candidates",
+        "delta",
+        "cvd",
+        "rolling_delta",
+        "cvd_slope",
+        "cvd_acceleration",
+        "footprint",
+        "aggression_metrics",
+        "absorption_metrics",
+        "big_print_metrics",
+        "dom_depth_metrics",
+        "liquidity_pulling_stacking",
+        "data_quality"
+      ],
+      "title": "MarketFeatureSnapshot",
+      "type": "object"
+    },
+    "TradeCandidate": {
+      "$defs": {
+        "DecisionSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "ai_enabled": {
+              "const": false,
+              "default": false,
+              "enum": [
+                false
+              ],
+              "title": "Ai Enabled",
+              "type": "boolean"
+            },
+            "config_hash": {
+              "default": "",
+              "title": "Config Hash",
+              "type": "string"
+            },
+            "decision": {
+              "default": "UNSET",
+              "enum": [
+                "UNSET",
+                "ENTER",
+                "NO_TRADE"
+              ],
+              "title": "Decision",
+              "type": "string"
+            },
+            "direction": {
+              "$ref": "#/$defs/Direction",
+              "default": "FLAT"
+            },
+            "evidence": {
+              "title": "Evidence",
+              "type": "object"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "market_feature_sha256": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Market Feature Sha256"
+            },
+            "parameter_version": {
+              "default": "",
+              "title": "Parameter Version",
+              "type": "string"
+            },
+            "provider": {
+              "default": "MECHANICAL",
+              "title": "Provider",
+              "type": "string"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "setup_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/SetupType"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "state": {
+              "default": "",
+              "title": "State",
+              "type": "string"
+            },
+            "timestamp_ns": {
+              "title": "Timestamp Ns",
+              "type": "integer"
+            },
+            "trade_safe": {
+              "title": "Trade Safe",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "timestamp_ns",
+            "instrument",
+            "active_contract",
+            "trade_safe"
+          ],
+          "title": "DecisionSnapshot",
+          "type": "object"
+        },
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "SetupType": {
+          "enum": [
+            "TREND",
+            "MEAN_REVERSION"
+          ],
+          "title": "SetupType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "candidate_id": {
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "decision_snapshot": {
+          "$ref": "#/$defs/DecisionSnapshot"
+        },
+        "direction": {
+          "$ref": "#/$defs/Direction"
+        },
+        "entry_reference_ticks": {
+          "title": "Entry Reference Ticks",
+          "type": "integer"
+        },
+        "event_index": {
+          "title": "Event Index",
+          "type": "integer"
+        },
+        "evidence": {
+          "title": "Evidence",
+          "type": "object"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "setup_type": {
+          "$ref": "#/$defs/SetupType"
+        },
+        "stop_ticks": {
+          "title": "Stop Ticks",
+          "type": "integer"
+        },
+        "target_ticks": {
+          "title": "Target Ticks",
+          "type": "integer"
+        },
+        "timestamp_ns": {
+          "title": "Timestamp Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "setup_type",
+        "direction",
+        "timestamp_ns",
+        "event_index",
+        "instrument",
+        "active_contract",
+        "entry_reference_ticks",
+        "stop_ticks",
+        "target_ticks",
+        "evidence",
+        "decision_snapshot"
+      ],
+      "title": "TradeCandidate",
+      "type": "object"
+    },
+    "TradePrint": {
+      "$defs": {
+        "Side": {
+          "description": "Book side. For TRADE events the side is the AGGRESSOR side (BID = buyer lifted the ask).",
+          "enum": [
+            "BID",
+            "ASK",
+            "NONE"
+          ],
+          "title": "Side",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "aggressor_side": {
+          "$ref": "#/$defs/Side"
+        },
+        "initiator_source": {
+          "default": "provider",
+          "enum": [
+            "provider",
+            "quote_fallback",
+            "unknown"
+          ],
+          "title": "Initiator Source",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "price_ticks": {
+          "title": "Price Ticks",
+          "type": "integer"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sequence": {
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "size": {
+          "exclusiveMinimum": 0,
+          "title": "Size",
+          "type": "integer"
+        },
+        "ts_event_ns": {
+          "minimum": 0,
+          "title": "Ts Event Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "sequence",
+        "instrument",
+        "active_contract",
+        "price_ticks",
+        "size",
+        "aggressor_side"
+      ],
+      "title": "TradePrint",
+      "type": "object"
+    },
+    "VolumeProfileSnapshot": {
+      "$defs": {
+        "ProfileZone": {
+          "additionalProperties": false,
+          "properties": {
+            "age_events": {
+              "default": 0,
+              "title": "Age Events",
+              "type": "integer"
+            },
+            "high_ticks": {
+              "title": "High Ticks",
+              "type": "integer"
+            },
+            "low_ticks": {
+              "title": "Low Ticks",
+              "type": "integer"
+            },
+            "neighboring_volume_ratio": {
+              "title": "Neighboring Volume Ratio",
+              "type": "number"
+            },
+            "persistence": {
+              "default": 1,
+              "title": "Persistence",
+              "type": "integer"
+            },
+            "relative_volume_metric": {
+              "title": "Relative Volume Metric",
+              "type": "number"
+            },
+            "retest_count": {
+              "default": 0,
+              "title": "Retest Count",
+              "type": "integer"
+            },
+            "volume_to_median_ratio": {
+              "default": 1.0,
+              "title": "Volume To Median Ratio",
+              "type": "number"
+            },
+            "width_ticks": {
+              "title": "Width Ticks",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "low_ticks",
+            "high_ticks",
+            "relative_volume_metric",
+            "neighboring_volume_ratio",
+            "width_ticks"
+          ],
+          "title": "ProfileZone",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "end_ns": {
+          "title": "End Ns",
+          "type": "integer"
+        },
+        "hvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Hvn Zones",
+          "type": "array"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "lvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Lvn Zones",
+          "type": "array"
+        },
+        "poc_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Poc Ticks"
+        },
+        "profile_kind": {
+          "title": "Profile Kind",
+          "type": "string"
+        },
+        "profile_shape": {
+          "title": "Profile Shape",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "start_ns": {
+          "title": "Start Ns",
+          "type": "integer"
+        },
+        "total_volume": {
+          "title": "Total Volume",
+          "type": "integer"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "vah_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Vah Ticks"
+        },
+        "val_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Val Ticks"
+        },
+        "value_area_fraction": {
+          "title": "Value Area Fraction",
+          "type": "number"
+        },
+        "volume_by_price": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Volume By Price",
+          "type": "object"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "instrument",
+        "active_contract",
+        "profile_kind",
+        "start_ns",
+        "end_ns",
+        "poc_ticks",
+        "vah_ticks",
+        "val_ticks",
+        "hvn_zones",
+        "lvn_zones",
+        "volume_by_price",
+        "profile_shape",
+        "total_volume",
+        "value_area_fraction"
+      ],
+      "title": "VolumeProfileSnapshot",
+      "type": "object"
+    }
+  },
+  "schema_sha256": "f4cd5a9f9d9ec62730f166ec8e2c884bcf983aa779a12ed129e1297c6152bdbf"
+}

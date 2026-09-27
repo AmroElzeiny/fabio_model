@@ -1,0 +1,115 @@
+{
+  "windows": [
+    {
+      "window": 0,
+      "selected_params": {
+        "aggression_delta_zscore": 0.5,
+        "stop_buffer_ticks": 3
+      },
+      "train_metrics": {
+        "trades": 1,
+        "net_pnl": 28.0,
+        "net_return": 0.00028,
+        "expectancy": 28.0,
+        "profit_factor": Infinity,
+        "median_r": 0.9333333333333333,
+        "max_drawdown": 0.0,
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "calmar": Infinity,
+        "win_rate": 1.0,
+        "average_win": 28.0,
+        "average_loss": 0.0,
+        "tail_loss_mean": 28.0,
+        "longest_loss_streak": 0,
+        "average_mfe_ticks": 14.0,
+        "average_mae_ticks": 0.0,
+        "trades_per_month": 1.0,
+        "monthly_stability": 1.0,
+        "regime_stability": 1.0,
+        "cost_sensitivity": null
+      },
+      "validation_metrics": {
+        "trades": 1,
+        "net_pnl": 28.0,
+        "net_return": 0.00028,
+        "expectancy": 28.0,
+        "profit_factor": Infinity,
+        "median_r": 0.9333333333333333,
+        "max_drawdown": 0.0,
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "calmar": Infinity,
+        "win_rate": 1.0,
+        "average_win": 28.0,
+        "average_loss": 0.0,
+        "tail_loss_mean": 28.0,
+        "longest_loss_streak": 0,
+        "average_mfe_ticks": 14.0,
+        "average_mae_ticks": 0.0,
+        "trades_per_month": 1.0,
+        "monthly_stability": 1.0,
+        "regime_stability": 1.0,
+        "cost_sensitivity": null
+      }
+    },
+    {
+      "window": 1,
+      "selected_params": {
+        "aggression_delta_zscore": 0.5,
+        "stop_buffer_ticks": 2
+      },
+      "train_metrics": {
+        "trades": 1,
+        "net_pnl": 8.0,
+        "net_return": 8e-05,
+        "expectancy": 8.0,
+        "profit_factor": Infinity,
+        "median_r": 0.1,
+        "max_drawdown": 0.0,
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "calmar": Infinity,
+        "win_rate": 1.0,
+        "average_win": 8.0,
+        "average_loss": 0.0,
+        "tail_loss_mean": 8.0,
+        "longest_loss_streak": 0,
+        "average_mfe_ticks": 10.0,
+        "average_mae_ticks": 0.0,
+        "trades_per_month": 1.0,
+        "monthly_stability": 1.0,
+        "regime_stability": 1.0,
+        "cost_sensitivity": null
+      },
+      "validation_metrics": {
+        "trades": 1,
+        "net_pnl": 8.0,
+        "net_return": 8e-05,
+        "expectancy": 8.0,
+        "profit_factor": Infinity,
+        "median_r": 0.1,
+        "max_drawdown": 0.0,
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "calmar": Infinity,
+        "win_rate": 1.0,
+        "average_win": 8.0,
+        "average_loss": 0.0,
+        "tail_loss_mean": 8.0,
+        "longest_loss_streak": 0,
+        "average_mfe_ticks": 10.0,
+        "average_mae_ticks": 0.0,
+        "trades_per_month": 1.0,
+        "monthly_stability": 1.0,
+        "regime_stability": 1.0,
+        "cost_sensitivity": null
+      }
+    }
+  ],
+  "aggregate": {
+    "windows": 2,
+    "validation_trades": 2,
+    "validation_net_pnl": 36.0
+  }
+}

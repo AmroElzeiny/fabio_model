@@ -1,0 +1,317 @@
+{
+  "package": "Fabio_02_Strategy_Execution",
+  "contract_version": "FABIO_MECHANICAL_V1",
+  "file_count": 62,
+  "files": [
+    {
+      "path": "FABIO_SPEC.md",
+      "sha256": "1579a2f2c471251aae11818771c2c02f481768923e6d40cb05d0d32090a9a195",
+      "bytes": 1531
+    },
+    {
+      "path": "FIRST_TEST_GUIDE.md",
+      "sha256": "06ff39d609f3d3da3f8b16249ebda84d482aad98b071305297abce543c1eb0c0",
+      "bytes": 1129
+    },
+    {
+      "path": "IMPLEMENTATION_REPORT.md",
+      "sha256": "eae888d96dcb0375d24dc7b668199a6fa39dad49fe7e1d7ee261d27bb0cdc9be",
+      "bytes": 2116
+    },
+    {
+      "path": "INTEGRATION_CONTRACT.md",
+      "sha256": "65a107e646c1b5190d6fe858db069863aead45f97308311e81c85a6baa78e150",
+      "bytes": 1218
+    },
+    {
+      "path": "README.md",
+      "sha256": "e02a841ad6b7989383eed3af0b6c7e8fa9f0b0ea4bc43f9e6ecd6a6d35e8e98c",
+      "bytes": 1928
+    },
+    {
+      "path": "RESEARCH_PROTOCOL.md",
+      "sha256": "c66041f842950feb4fc5fc6f97c5669515a7a10bfcacc84c31549e3d4a01cc09",
+      "bytes": 1648
+    },
+    {
+      "path": "RULE_TRACEABILITY.md",
+      "sha256": "725e48347173cc735369e294f7e1d33ab64edcaf0b93e52d18060063b79113d8",
+      "bytes": 1976
+    },
+    {
+      "path": "TEST_RESULTS.md",
+      "sha256": "9d15c1866e631ff9d43dfa8e1e31878edd966e631ffcfc9ecaebb21c1ecdcd3c",
+      "bytes": 475
+    },
+    {
+      "path": "configs/fabio_invariants.yaml",
+      "sha256": "17750ef2d530bc067ed384e7d34b5b4d56c96f24888e61b849cad4dbb5500e50",
+      "bytes": 686
+    },
+    {
+      "path": "configs/interpretation.yaml",
+      "sha256": "921f88fd55ea2588f351b84d9a3086e565407dccc3937285700c4272fc91d665",
+      "bytes": 1548
+    },
+    {
+      "path": "configs/search_space.yaml",
+      "sha256": "953eedb0c66ef2eee577fd7c78edcf37658c48c363457189a765c16336b06843",
+      "bytes": 4108
+    },
+    {
+      "path": "contracts/__init__.py",
+      "sha256": "28bbc59b85244d20af8eb886a0c336e583df9a30efd94ab27f12e2c722e9b800",
+      "bytes": 74
+    },
+    {
+      "path": "contracts/models.py",
+      "sha256": "54d98d92d4cf296c6bb72902237ca26e86186cba738d0a58b38678c3d7398d60",
+      "bytes": 6004
+    },
+    {
+      "path": "contracts/schema.py",
+      "sha256": "99518e9c92b0a165a6b2aebe5f4fd757c0a0509616306f72b3378f57b38d8b54",
+      "bytes": 865
+    },
+    {
+      "path": "fabio/__init__.py",
+      "sha256": "05f9aa607b022813f4ae021ad2e4f9f4bb21d775e17c83023cc5ca823d948add",
+      "bytes": 20
+    },
+    {
+      "path": "fabio/accounting/__init__.py",
+      "sha256": "953abca34d9425b4a009ff61ff18330780406cf0e569a1f74899f4236d0fd410",
+      "bytes": 25
+    },
+    {
+      "path": "fabio/accounting/portfolio.py",
+      "sha256": "118d7185dc2266796cd826489d042ab8a98c0c9f688677c930ae0b905d64a2bc",
+      "bytes": 2716
+    },
+    {
+      "path": "fabio/backtest/__init__.py",
+      "sha256": "8232ab4645ba44a1bf4c66d75bb2f8ad08741177cd3e086a31b3960e59cdefdd",
+      "bytes": 51
+    },
+    {
+      "path": "fabio/backtest/engine.py",
+      "sha256": "ee60ca34da1f629c229ac7ff3773a1f2cc3bdcdd57191b34634a55c6afc040b2",
+      "bytes": 6397
+    },
+    {
+      "path": "fabio/cli.py",
+      "sha256": "261f5c05d7e82e7542daf774fb8f22542b273a74a9aef95a224cd26fe3c99a9b",
+      "bytes": 3772
+    },
+    {
+      "path": "fabio/config.py",
+      "sha256": "21385f0ffb3c3da20ae3492e1e00e27243955845cb83d04211f86b5945d1e002",
+      "bytes": 1534
+    },
+    {
+      "path": "fabio/execution/__init__.py",
+      "sha256": "5687a9b8e699a2ea4900f208428abe44235e3789e949c61cf200ad04827ddc95",
+      "bytes": 85
+    },
+    {
+      "path": "fabio/execution/adapters.py",
+      "sha256": "14c247bfc337ed07151e54d588062b8cf015d9c09f1594371f5899cada3d9d39",
+      "bytes": 968
+    },
+    {
+      "path": "fabio/execution/simulator.py",
+      "sha256": "06ed64378454700189213bc193950abf6a7d3fd68d5437f964b2c0f8557bd143",
+      "bytes": 6107
+    },
+    {
+      "path": "fabio/fixtures/__init__.py",
+      "sha256": "4d77f86e3c1d4c2a203a15cc6e94e44b14a496a240b3065fc785ffcf5c1c49e7",
+      "bytes": 25
+    },
+    {
+      "path": "fabio/fixtures/synthetic.py",
+      "sha256": "d4d2217563214f59595f0cc1656367e8655089b705bfe4fdb7368b38ba1792c1",
+      "bytes": 5449
+    },
+    {
+      "path": "fabio/reporting/__init__.py",
+      "sha256": "db7da25a782df86433a71ca45bd1070ae45150f3d1a2e8c046aba7fae2200bfb",
+      "bytes": 22
+    },
+    {
+      "path": "fabio/reporting/export.py",
+      "sha256": "742bff179b1b837fefca2336d10949d017342b6cb354e729eebd989d8ed904ff",
+      "bytes": 790
+    },
+    {
+      "path": "fabio/research/__init__.py",
+      "sha256": "39e4e3a0478d894563c55cbab1640148f7aacb302c3682d60bfd74bab8473fde",
+      "bytes": 247
+    },
+    {
+      "path": "fabio/research/ablation.py",
+      "sha256": "7706f0056b2012bb5c9d188c23146de6209bcd0f0b38e16cad2f22869a5680f4",
+      "bytes": 1568
+    },
+    {
+      "path": "fabio/research/locking.py",
+      "sha256": "79a11f0430a204ba8ad00bf7af55787f202e7c31ba6ada0598ddfc6af5e779f6",
+      "bytes": 903
+    },
+    {
+      "path": "fabio/research/metrics.py",
+      "sha256": "c4abd6cb8043528781994069fe8a650ea5b0e1542edcfaa5a9fac7ad5ccfa8fd",
+      "bytes": 2296
+    },
+    {
+      "path": "fabio/research/monte_carlo.py",
+      "sha256": "d852b91bc616c23a56262c9382d908ae3870804fd2e773fe449877f497c2d5b0",
+      "bytes": 1805
+    },
+    {
+      "path": "fabio/research/optimize.py",
+      "sha256": "f8d23f8681de02f4dd64cf4f29209041110dd9cce35f7b7d1cd6f9111492268a",
+      "bytes": 2729
+    },
+    {
+      "path": "fabio/research/robustness.py",
+      "sha256": "455da84a2a68def7f95705b94c8c572559cc9d5048309589ab05f6f20d07965d",
+      "bytes": 2916
+    },
+    {
+      "path": "fabio/research/walk_forward.py",
+      "sha256": "e35c2a0403e2091220457965fbd08f2ace1d9362aac88d94445a45e19565b6de",
+      "bytes": 1069
+    },
+    {
+      "path": "fabio/risk/__init__.py",
+      "sha256": "f9e25deeb65c7a49776e7b3265415015650b2d0bc6600255c2909a39a81975a2",
+      "bytes": 56
+    },
+    {
+      "path": "fabio/risk/engine.py",
+      "sha256": "85d4b5df7e99c065aae57869c814f3104a65b1561bfca706cddd801c6e9f4ad5",
+      "bytes": 4010
+    },
+    {
+      "path": "fabio/strategy/__init__.py",
+      "sha256": "938fc185887c47333468296704962671d4f7edc8837c85b5c4745504a8503d4b",
+      "bytes": 267
+    },
+    {
+      "path": "fabio/strategy/common.py",
+      "sha256": "3cfff16e45e6f72685272860c1d4e148c517928b749e570b8dde60507b4a5b64",
+      "bytes": 2357
+    },
+    {
+      "path": "fabio/strategy/decision.py",
+      "sha256": "f6e357327ee19f1168305fc63e9632218fa61a2f724005bd8aeacbc801c93d85",
+      "bytes": 754
+    },
+    {
+      "path": "fabio/strategy/fsm.py",
+      "sha256": "6561056bd30c40d1e8c604059722a223cef8d678940d0efc1fb2aff2f073c65b",
+      "bytes": 10038
+    },
+    {
+      "path": "fabio/strategy/target_stop.py",
+      "sha256": "985f84d9d21910003ef031c84767b77a65edd83310478033269301f45849348a",
+      "bytes": 2456
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "0a415ec2d8fa9dc01e6ca7305cc3ccee6e1f9574d2cc0ea6a500b629f3e5b6e2",
+      "bytes": 584
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "c82b51d16b492195ae68153b14fd2a14c5b24378b3024ad7e289d10fa4459edb",
+      "bytes": 38
+    },
+    {
+      "path": "sample_reports/ablation.json",
+      "sha256": "536817a4ab49c8fa2e53b1bee5324a4ba5267d1224f1e1e441316bd7e23d3bca",
+      "bytes": 5423
+    },
+    {
+      "path": "sample_reports/contract_schema.json",
+      "sha256": "be36782f52e2fcc02041f3b3730b1861af0478b1f77ecbd6d4056d7f8e15fe7a",
+      "bytes": 45121
+    },
+    {
+      "path": "sample_reports/monte_carlo.json",
+      "sha256": "c3c07e411c3301df96e7bcf52fee3a990b4a59428876f48977d14c15f99d594c",
+      "bytes": 259
+    },
+    {
+      "path": "sample_reports/oos_lock_manifest.json",
+      "sha256": "424e8582e4de1ebe79edcce64daa42fdb6f514ac9e8861f64b0a72716cce3e92",
+      "bytes": 242
+    },
+    {
+      "path": "sample_reports/optimization.json",
+      "sha256": "a252605e27fcc640c8af70d94d73b190fec44fa0ba36f8f8f9dce9656b12d5af",
+      "bytes": 20801
+    },
+    {
+      "path": "sample_reports/robustness.json",
+      "sha256": "c06187c0c5b547cd90a196a125c8c1b102ae2d6283212b88107ba6322b385b93",
+      "bytes": 31769
+    },
+    {
+      "path": "sample_reports/self_check.json",
+      "sha256": "80fb94f696cf155db6e7c3c81a924bf9ab352453346990149056d0cfd444ed73",
+      "bytes": 346
+    },
+    {
+      "path": "sample_reports/synthetic_backtest.json",
+      "sha256": "4dbf5b130885f339c09b4c3ef801335b4b1fb87c16464aab238d53e95f65044d",
+      "bytes": 1787
+    },
+    {
+      "path": "sample_reports/trade_ledger.csv",
+      "sha256": "7e2f577b1842f5b2f15950c19de3f44fc7984301addcf4fb7b326b6ce18d0df0",
+      "bytes": 310
+    },
+    {
+      "path": "sample_reports/walk_forward.json",
+      "sha256": "017164ac7273b6e7cb306d1172ea51455b6abd925f9b15c9b8342c8aa8a64e38",
+      "bytes": 3040
+    },
+    {
+      "path": "tests/test_ai_disabled.py",
+      "sha256": "ade97a8e0f61b101e3e0b4a438765fc7ca387b264dbee1f489308ce88fc5a7c7",
+      "bytes": 478
+    },
+    {
+      "path": "tests/test_all_locks_and_gap.py",
+      "sha256": "c4dffc914e6336757d905024555d8d7755d39e1d88374690bb74c94d18b810fb",
+      "bytes": 2758
+    },
+    {
+      "path": "tests/test_backtest_research.py",
+      "sha256": "2a17f977c6e41ee704053b4ba11ef55a4f69224b72417b2dadfab4a405c5c106",
+      "bytes": 2351
+    },
+    {
+      "path": "tests/test_contracts_config.py",
+      "sha256": "2e2563f22308481fe0711e1ea80c967df1e6792b1a20f08d170e2cb41b559155",
+      "bytes": 1058
+    },
+    {
+      "path": "tests/test_execution_accounting.py",
+      "sha256": "c017e9ffa1f0bcce79a511328543e60e08343f34b3a0e4a44d55fb12a5c6ca2d",
+      "bytes": 1644
+    },
+    {
+      "path": "tests/test_fsm.py",
+      "sha256": "352c054c5092e46af183dfbe16b1672267416c75ba3d71d24898551defde9115",
+      "bytes": 2416
+    },
+    {
+      "path": "tests/test_stop_risk.py",
+      "sha256": "811c2ddd87a2a8de5c7e8a36cbf781652e888633812d8ce4c08f9abed386bf60",
+      "bytes": 1875
+    }
+  ]
+}

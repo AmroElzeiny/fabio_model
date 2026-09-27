@@ -1,0 +1,46 @@
+{
+  "additionalProperties": false,
+  "description": "Transport placeholder for a later strategy package; contains no trade decision logic.",
+  "properties": {
+    "active_contract": {
+      "title": "Active Contract",
+      "type": "string"
+    },
+    "decision": {
+      "const": "UNSET",
+      "default": "UNSET",
+      "title": "Decision",
+      "type": "string"
+    },
+    "instrument": {
+      "title": "Instrument",
+      "type": "string"
+    },
+    "market_feature_sha256": {
+      "title": "Market Feature Sha256",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "FABIO_MECHANICAL_V1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "timestamp_ns": {
+      "title": "Timestamp Ns",
+      "type": "integer"
+    },
+    "trade_safe": {
+      "title": "Trade Safe",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "timestamp_ns",
+    "instrument",
+    "active_contract",
+    "market_feature_sha256",
+    "trade_safe"
+  ],
+  "title": "DecisionSnapshot",
+  "type": "object"
+}

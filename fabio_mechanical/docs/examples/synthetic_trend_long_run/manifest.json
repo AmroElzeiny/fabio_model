@@ -1,0 +1,46 @@
+{
+  "ai_enabled": false,
+  "code": {
+    "git_commit": null,
+    "package_version": "1.0.0",
+    "source_sha256": "9ce79ebb4e9c02bc7ca5a20aac2a2ea23bda93761aefec18985d7847f66904db"
+  },
+  "command": "fabio backtest run --input <synthetic trend_long DBN + definitions> (example output)",
+  "config_hash": "cbfdf133ba72e8bd58156c50ef6a99a97f9a91b9cb5d5a6945c3a0ddd3ac5624",
+  "config_version": "baseline-v1",
+  "contract_version": "FABIO_MECHANICAL_V1",
+  "created_utc": "2026-09-27T00:14:04.995868+00:00",
+  "dataset": {
+    "dataset_sha256": "297d746733f9a502633b64cf73f6408a0f90b1480641a3804584c418d045dd17",
+    "sources": [
+      {
+        "dataset_sha256": "709b7300c7a919b18f31fe529c27349421d6ab0d3a4d5f2e9076b8e753899691",
+        "files": [
+          {
+            "bytes": 720,
+            "name": "glbx-mdp3-20260113.definition.dbn",
+            "path": "glbx-mdp3-20260113.definition.dbn",
+            "sha256": "570434404a0024d0261770c83d41e5378b7fddb932fdc759ea1b99feb6249f34"
+          },
+          {
+            "bytes": 3869800,
+            "name": "glbx-mdp3-20260113.mbo.dbn",
+            "path": "glbx-mdp3-20260113.mbo.dbn",
+            "sha256": "34f0da68e08fa93bea7ce2f65631da86aeab2f9be4c60fdb685ae1a29fed9a5e"
+          }
+        ]
+      }
+    ]
+  },
+  "experimental": {
+    "experimental_early_exit_enabled": false
+  },
+  "invariant_hash": "73d3d613ed0ebbcb9220713d09ffde924c7681340389089eea9bc119e2e7e6da",
+  "phase": "any",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.0",
+  "run_id": "619f9a60981c48a197b96064769273e0",
+  "schema_sha256": "f4cd5a9f9d9ec62730f166ec8e2c884bcf983aa779a12ed129e1297c6152bdbf",
+  "search_space_sha256": "281c93cf99188f1251c1dcb250fe9992671405c2e923189eb7eed3a7a2235a7a",
+  "seconds": 7.951
+}

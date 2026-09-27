@@ -1,0 +1,2 @@
+instrument,direction,quantity,entry,exit,gross_pnl,fees,net_pnl,r_multiple,exit_reason,mfe_ticks,mae_ticks,setup_type,candidate_id,config_hash
+MNQ,LONG,10,101.50,105,70.00,42.0,28.00,1.12,TARGET,14,0,TREND,0000b95d-0f94-4e65-9999-7d82c278a280,3a63fc76b10b71eaba27909f9ea5012b6dcf944c635b5a2ce3aa10b4f55f6927

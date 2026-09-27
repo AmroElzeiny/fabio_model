@@ -1,0 +1,15 @@
+# Hard risk engine. Sits below the decision layer; never tunable by the optimizer.
+initial_equity: 100000
+risk_fraction: 0.0035
+max_risk_fraction: 0.005
+max_daily_loss_fraction: 0.02
+max_weekly_loss_fraction: 0.04
+weekly_loss_lock_enabled: true
+max_consecutive_losses: 4
+loss_streak_reset: daily            # daily | never
+max_concurrent_exposure_fraction: 0.02
+max_position_contracts: 10
+session_trade_cap: 6                # per CME trading day
+cooldown_events: 2                  # structure periods since the last approved entry
+flatten_time: "16:55"               # America/New_York, before the CME 17:00 maintenance halt
+flatten_timezone: America/New_York

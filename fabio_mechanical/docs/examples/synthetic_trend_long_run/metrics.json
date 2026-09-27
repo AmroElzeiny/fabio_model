@@ -1,0 +1,23 @@
+{
+  "average_loss": 0.0,
+  "average_mae_ticks": -1.0,
+  "average_mfe_ticks": 54.0,
+  "average_win": 2678.0,
+  "calmar": "inf",
+  "cost_sensitivity": null,
+  "expectancy": 2678.0,
+  "longest_loss_streak": 0,
+  "max_drawdown": 0.0,
+  "median_r": 8.9267,
+  "monthly_stability": 1.0,
+  "net_pnl": 2678.0,
+  "net_return": 0.02678,
+  "profit_factor": "inf",
+  "regime_stability": 1.0,
+  "sharpe": 0.0,
+  "sortino": 0.0,
+  "tail_loss_mean": 2678.0,
+  "trades": 1,
+  "trades_per_month": 1.0,
+  "win_rate": 1.0
+}

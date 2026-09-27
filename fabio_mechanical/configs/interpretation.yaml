@@ -1,0 +1,78 @@
+# Quantitative interpretation of the Fabio playbook. None of these numbers is claimed to be a
+# Fabio-authored value; they operationalize descriptive rules (see RULE_TRACEABILITY.md).
+# Only keys listed in search_space.yaml may be changed by the optimizer.
+version: baseline-v1
+AI_ENABLED: false
+
+strategy:
+  # --- market state (consumed by market/structure.py) ---
+  balance_value_overlap_min: 0.55          # ratio, value-area overlap of window halves
+  poc_migration_max: 4.0                   # ticks, POC migration between window halves
+  directional_efficiency_min: 0.55         # ratio, impulse-leg efficiency => out of balance
+  directional_efficiency_max_for_balance: 0.35
+  acceptance_event_count: 3                # structure periods closed outside value => accepted
+  # --- trend / mean-reversion gates (consumed by strategy/fsm.py) ---
+  breakout_distance_ticks: 4.0
+  displacement_zscore_min: 1.0
+  impulse_min_ticks: 8.0
+  pullback_depth_min: 0.15                 # also the leg-lock trigger in market/structure.py
+  pullback_depth_max: 0.85
+  # --- location (LVN qualification) ---
+  lvn_relative_volume_max: 0.55            # zone volume / profile median volume
+  lvn_neighbor_ratio: 0.70                 # zone volume / mean neighbouring volume
+  lvn_min_width_ticks: 1
+  lvn_max_age_events: 100                  # structure periods since the leg profile was locked
+  lvn_max_retests: 3
+  # --- aggression ---
+  aggression_delta_zscore: 1.0
+  aggression_persistence: 1                # consecutive snapshot observations
+  stacked_imbalance_ratio: 2.0
+  stacked_levels_min: 2
+  big_print_percentile: 0.90
+  cvd_slope_min: 0.10                      # normalized CVD slope in [-1, 1]
+  severe_opposing_absorption: 0.80         # absorption score that blocks entry
+  rejection_speed_min: 0.30                # reclaim-leg velocity / breakout-attempt velocity
+  # --- stops / lifecycle / safety ---
+  stop_buffer_ticks: 2
+  setup_expiry_events: 40                  # structure periods
+  data_quality_min: 0.80
+  stale_data_ms_max: 2500
+  session_windows:
+    trend: [NY_RTH]
+    mean_reversion: [LONDON, NY_RTH]
+
+# Operational definitions introduced by the integration (Package 2 expected these to be
+# computed upstream but never defined them). Not in the search space.
+structure:
+  period_seconds: 60                       # unit of every "*_events" counter above
+  sample_seconds: 5                        # price sampling for directional efficiency
+  balance_window_minutes: 30               # balance classification window (two halves)
+  displacement_lookback_periods: 60        # distribution of |1-period moves| for the z-score
+  displacement_min_periods: 10
+  max_archived_balances: 20
+  max_prior_sessions: 5
+
+# Package 1 measurement definitions.
+market:
+  top_n_depth: 10
+  value_area_fraction: 0.70
+  hvn_quantile: 0.75
+  lvn_quantile: 0.25
+  imbalance_ratio: 3.0
+  stacked_levels: 3
+  big_print_percentile: 0.95
+  rolling_trade_window: 50
+  auction_window: 100
+  absorption_price_progress_floor_ticks: 1.0
+  absorption_ratio_scale: 20.0
+  iceberg_replenishment_scale: 10.0
+  session_profile_refresh_ms: 1000
+  market_state:
+    balance_efficiency_max: 0.35
+    imbalance_efficiency_min: 0.60
+    range_expansion_min: 1.20
+    delta_persistence_min: 0.60
+
+# Non-baseline extensions. Every flag must be false in the Pure Fabio baseline.
+experimental:
+  experimental_early_exit_enabled: false

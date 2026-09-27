@@ -1,0 +1,139 @@
+{
+  "$defs": {
+    "FootprintLevel": {
+      "additionalProperties": false,
+      "properties": {
+        "ask_executed": {
+          "default": 0,
+          "title": "Ask Executed",
+          "type": "integer"
+        },
+        "bid_executed": {
+          "default": 0,
+          "title": "Bid Executed",
+          "type": "integer"
+        },
+        "buy_imbalance": {
+          "default": false,
+          "title": "Buy Imbalance",
+          "type": "boolean"
+        },
+        "delta": {
+          "default": 0,
+          "title": "Delta",
+          "type": "integer"
+        },
+        "diagonal_buy_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Diagonal Buy Ratio"
+        },
+        "diagonal_sell_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Diagonal Sell Ratio"
+        },
+        "price_ticks": {
+          "title": "Price Ticks",
+          "type": "integer"
+        },
+        "sell_imbalance": {
+          "default": false,
+          "title": "Sell Imbalance",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "price_ticks"
+      ],
+      "title": "FootprintLevel",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "active_contract": {
+      "title": "Active Contract",
+      "type": "string"
+    },
+    "delta": {
+      "title": "Delta",
+      "type": "integer"
+    },
+    "instrument": {
+      "title": "Instrument",
+      "type": "string"
+    },
+    "levels": {
+      "items": {
+        "$ref": "#/$defs/FootprintLevel"
+      },
+      "title": "Levels",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "FABIO_MECHANICAL_V1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "stacked_buy_imbalance_levels": {
+      "default": 0,
+      "title": "Stacked Buy Imbalance Levels",
+      "type": "integer"
+    },
+    "stacked_sell_imbalance_levels": {
+      "default": 0,
+      "title": "Stacked Sell Imbalance Levels",
+      "type": "integer"
+    },
+    "total_volume": {
+      "title": "Total Volume",
+      "type": "integer"
+    },
+    "ts_event_ns": {
+      "title": "Ts Event Ns",
+      "type": "integer"
+    },
+    "unfinished_auction_evidence": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Unfinished Auction Evidence",
+      "type": "object"
+    },
+    "window_end_ns": {
+      "title": "Window End Ns",
+      "type": "integer"
+    },
+    "window_start_ns": {
+      "title": "Window Start Ns",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "ts_event_ns",
+    "instrument",
+    "active_contract",
+    "window_start_ns",
+    "window_end_ns",
+    "levels",
+    "total_volume",
+    "delta"
+  ],
+  "title": "FootprintSnapshot",
+  "type": "object"
+}

@@ -1,0 +1,25 @@
+# Data acquisition, instruments, sessions and data-quality checks.
+dataset: GLBX.MDP3
+default_symbol: NQ.v.0
+stype_in: continuous
+preferred_schema: mbo
+raw_dir: data/raw
+cache_dir: data/cache
+runs_dir: runs
+known_contract_prefixes: [NQ, MNQ]
+instruments:
+  NQ: {tick_size: "0.25", tick_value: "5.00", point_value: "20"}
+  MNQ: {tick_size: "0.25", tick_value: "0.50", point_value: "2"}
+quality:
+  max_sequence_gap: 1000000
+  dedupe_window: 100000
+sessions:
+  exchange_timezone: America/New_York
+  trading_day_start: "18:00"
+  # Evaluated in order; first match wins. Times are local to each window's timezone.
+  windows:
+    - {label: NY_RTH, timezone: America/New_York, start: "09:30", end: "16:00"}
+    - {label: POST_RTH, timezone: America/New_York, start: "16:00", end: "17:00"}
+    - {label: MAINTENANCE, timezone: America/New_York, start: "17:00", end: "18:00"}
+    - {label: LONDON, timezone: Europe/London, start: "08:00", end: "16:30"}
+  default_label: GLOBEX_OVERNIGHT

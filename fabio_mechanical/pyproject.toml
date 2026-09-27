@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fabio-mechanical"
+version = "1.0.0"
+description = "Integrated CME NQ MBO market replay + mechanical Fabio (Market State -> Location -> Aggression) strategy research system. No AI in the runtime."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+dependencies = [
+    "pydantic>=2.7,<3",
+    "PyYAML>=6.0",
+    "tzdata>=2024.1",
+]
+
+[project.optional-dependencies]
+databento = ["databento>=0.60"]
+parquet = ["pyarrow>=15"]
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=1.10", "types-PyYAML>=6"]
+all = ["databento>=0.60", "pyarrow>=15", "pytest>=8", "ruff>=0.6", "mypy>=1.10", "types-PyYAML>=6"]
+
+[project.scripts]
+fabio = "fabio_mechanical.cli.main:main"
+
+# The repository root IS the ``fabio_mechanical`` package (requested flat layout).
+[tool.setuptools]
+package-dir = { "fabio_mechanical" = "." }
+packages = [
+    "fabio_mechanical",
+    "fabio_mechanical.accounting",
+    "fabio_mechanical.backtest",
+    "fabio_mechanical.cli",
+    "fabio_mechanical.configs",
+    "fabio_mechanical.contracts",
+    "fabio_mechanical.data",
+    "fabio_mechanical.decision",
+    "fabio_mechanical.execution",
+    "fabio_mechanical.ingest",
+    "fabio_mechanical.journal",
+    "fabio_mechanical.market",
+    "fabio_mechanical.orderbook",
+    "fabio_mechanical.orderflow",
+    "fabio_mechanical.profile",
+    "fabio_mechanical.quality",
+    "fabio_mechanical.replay",
+    "fabio_mechanical.reporting",
+    "fabio_mechanical.research",
+    "fabio_mechanical.risk",
+    "fabio_mechanical.strategy",
+]
+
+[tool.setuptools.package-data]
+"fabio_mechanical.configs" = ["*.yaml"]
+"fabio_mechanical.contracts" = ["*.txt", "*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"
+markers = ["slow: longer end-to-end or research runs"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py310"
+extend-exclude = ["data", "runs", "build", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "C4", "SIM"]
+ignore = ["E501", "E731", "B008", "SIM108", "UP007"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011", "SIM117", "C408"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_configs = true
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_redundant_casts = true
+no_implicit_optional = true
+exclude = ["^tests/", "^build/", "^data/", "^runs/"]

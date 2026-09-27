@@ -1,0 +1,1758 @@
+{
+  "contract_version": "FABIO_MECHANICAL_V1",
+  "models": {
+    "AuctionFeatureSnapshot": {
+      "$defs": {
+        "MarketState": {
+          "enum": [
+            "BALANCE",
+            "IMBALANCE_UP",
+            "IMBALANCE_DOWN",
+            "TRANSITION",
+            "UNKNOWN"
+          ],
+          "title": "MarketState",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "acceptance_outside_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acceptance Outside Value"
+        },
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "cvd_persistence": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cvd Persistence"
+        },
+        "delta_persistence": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delta Persistence"
+        },
+        "directional_efficiency": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Directional Efficiency"
+        },
+        "impulse_velocity_ticks_per_event": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse Velocity Ticks Per Event"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "poc_migration_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Poc Migration Ticks"
+        },
+        "pullback_depth_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pullback Depth Fraction"
+        },
+        "range_expansion_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Range Expansion Ratio"
+        },
+        "raw": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Raw",
+          "type": "object"
+        },
+        "return_to_value_frequency": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Return To Value Frequency"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "state_candidate": {
+          "$ref": "#/$defs/MarketState"
+        },
+        "time_inside_value_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Inside Value Fraction"
+        },
+        "time_outside_value_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Outside Value Fraction"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "vah_migration_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Vah Migration Ticks"
+        },
+        "val_migration_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Val Migration Ticks"
+        },
+        "value_area_overlap": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value Area Overlap"
+        },
+        "vwap_slope_ticks_per_event": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Vwap Slope Ticks Per Event"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "instrument",
+        "active_contract",
+        "state_candidate"
+      ],
+      "title": "AuctionFeatureSnapshot",
+      "type": "object"
+    },
+    "BookSnapshot": {
+      "$defs": {
+        "BookLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "order_count": {
+              "minimum": 0,
+              "title": "Order Count",
+              "type": "integer"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "size": {
+              "minimum": 0,
+              "title": "Size",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "price_ticks",
+            "size",
+            "order_count"
+          ],
+          "title": "BookLevel",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "asks": {
+          "items": {
+            "$ref": "#/$defs/BookLevel"
+          },
+          "title": "Asks",
+          "type": "array"
+        },
+        "best_ask": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BookLevel"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best_bid": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BookLevel"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bids": {
+          "items": {
+            "$ref": "#/$defs/BookLevel"
+          },
+          "title": "Bids",
+          "type": "array"
+        },
+        "dom_imbalance": {
+          "title": "Dom Imbalance",
+          "type": "number"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "microprice_ticks": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Microprice Ticks"
+        },
+        "queue_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Queue Metrics",
+          "type": "object"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sequence": {
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "spread_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Spread Ticks"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "weighted_ask_depth": {
+          "title": "Weighted Ask Depth",
+          "type": "number"
+        },
+        "weighted_bid_depth": {
+          "title": "Weighted Bid Depth",
+          "type": "number"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "sequence",
+        "instrument",
+        "active_contract",
+        "best_bid",
+        "best_ask",
+        "bids",
+        "asks",
+        "spread_ticks",
+        "weighted_bid_depth",
+        "weighted_ask_depth",
+        "dom_imbalance"
+      ],
+      "title": "BookSnapshot",
+      "type": "object"
+    },
+    "DecisionSnapshot": {
+      "additionalProperties": false,
+      "description": "Transport placeholder for a later strategy package; contains no trade decision logic.",
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "decision": {
+          "const": "UNSET",
+          "default": "UNSET",
+          "title": "Decision",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "market_feature_sha256": {
+          "title": "Market Feature Sha256",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "timestamp_ns": {
+          "title": "Timestamp Ns",
+          "type": "integer"
+        },
+        "trade_safe": {
+          "title": "Trade Safe",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "timestamp_ns",
+        "instrument",
+        "active_contract",
+        "market_feature_sha256",
+        "trade_safe"
+      ],
+      "title": "DecisionSnapshot",
+      "type": "object"
+    },
+    "FootprintSnapshot": {
+      "$defs": {
+        "FootprintLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "ask_executed": {
+              "default": 0,
+              "title": "Ask Executed",
+              "type": "integer"
+            },
+            "bid_executed": {
+              "default": 0,
+              "title": "Bid Executed",
+              "type": "integer"
+            },
+            "buy_imbalance": {
+              "default": false,
+              "title": "Buy Imbalance",
+              "type": "boolean"
+            },
+            "delta": {
+              "default": 0,
+              "title": "Delta",
+              "type": "integer"
+            },
+            "diagonal_buy_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Buy Ratio"
+            },
+            "diagonal_sell_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Sell Ratio"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "sell_imbalance": {
+              "default": false,
+              "title": "Sell Imbalance",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "price_ticks"
+          ],
+          "title": "FootprintLevel",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "delta": {
+          "title": "Delta",
+          "type": "integer"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "levels": {
+          "items": {
+            "$ref": "#/$defs/FootprintLevel"
+          },
+          "title": "Levels",
+          "type": "array"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stacked_buy_imbalance_levels": {
+          "default": 0,
+          "title": "Stacked Buy Imbalance Levels",
+          "type": "integer"
+        },
+        "stacked_sell_imbalance_levels": {
+          "default": 0,
+          "title": "Stacked Sell Imbalance Levels",
+          "type": "integer"
+        },
+        "total_volume": {
+          "title": "Total Volume",
+          "type": "integer"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "unfinished_auction_evidence": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Unfinished Auction Evidence",
+          "type": "object"
+        },
+        "window_end_ns": {
+          "title": "Window End Ns",
+          "type": "integer"
+        },
+        "window_start_ns": {
+          "title": "Window Start Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "instrument",
+        "active_contract",
+        "window_start_ns",
+        "window_end_ns",
+        "levels",
+        "total_volume",
+        "delta"
+      ],
+      "title": "FootprintSnapshot",
+      "type": "object"
+    },
+    "MarketEvent": {
+      "$defs": {
+        "EventAction": {
+          "enum": [
+            "ADD",
+            "CANCEL",
+            "MODIFY",
+            "FILL",
+            "TRADE",
+            "CLEAR",
+            "SNAPSHOT",
+            "SESSION_BOUNDARY",
+            "CONTRACT_ROLL",
+            "NONE"
+          ],
+          "title": "EventAction",
+          "type": "string"
+        },
+        "Side": {
+          "enum": [
+            "BID",
+            "ASK",
+            "NONE"
+          ],
+          "title": "Side",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "$ref": "#/$defs/EventAction"
+        },
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "channel_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Channel Id"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": true,
+          "title": "Metadata",
+          "type": "object"
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Order Id"
+        },
+        "price_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Price Ticks"
+        },
+        "provider_flags": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Flags"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sequence": {
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "side": {
+          "$ref": "#/$defs/Side",
+          "default": "NONE"
+        },
+        "size": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Size",
+          "type": "integer"
+        },
+        "snapshot_complete": {
+          "default": false,
+          "title": "Snapshot Complete",
+          "type": "boolean"
+        },
+        "source": {
+          "default": "synthetic",
+          "title": "Source",
+          "type": "string"
+        },
+        "ts_event_ns": {
+          "minimum": 0,
+          "title": "Ts Event Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "sequence",
+        "instrument",
+        "active_contract",
+        "action"
+      ],
+      "title": "MarketEvent",
+      "type": "object"
+    },
+    "MarketFeatureSnapshot": {
+      "$defs": {
+        "AuctionFeatureSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "acceptance_outside_value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Acceptance Outside Value"
+            },
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "cvd_persistence": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Cvd Persistence"
+            },
+            "delta_persistence": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Delta Persistence"
+            },
+            "directional_efficiency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Directional Efficiency"
+            },
+            "impulse_velocity_ticks_per_event": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse Velocity Ticks Per Event"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "poc_migration_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Poc Migration Ticks"
+            },
+            "pullback_depth_fraction": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Pullback Depth Fraction"
+            },
+            "range_expansion_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Range Expansion Ratio"
+            },
+            "raw": {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "title": "Raw",
+              "type": "object"
+            },
+            "return_to_value_frequency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Return To Value Frequency"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "state_candidate": {
+              "$ref": "#/$defs/MarketState"
+            },
+            "time_inside_value_fraction": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Time Inside Value Fraction"
+            },
+            "time_outside_value_fraction": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Time Outside Value Fraction"
+            },
+            "ts_event_ns": {
+              "title": "Ts Event Ns",
+              "type": "integer"
+            },
+            "vah_migration_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Vah Migration Ticks"
+            },
+            "val_migration_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Val Migration Ticks"
+            },
+            "value_area_overlap": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Value Area Overlap"
+            },
+            "vwap_slope_ticks_per_event": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Vwap Slope Ticks Per Event"
+            }
+          },
+          "required": [
+            "ts_event_ns",
+            "instrument",
+            "active_contract",
+            "state_candidate"
+          ],
+          "title": "AuctionFeatureSnapshot",
+          "type": "object"
+        },
+        "DataQualityFlags": {
+          "additionalProperties": false,
+          "properties": {
+            "crossed_book": {
+              "default": false,
+              "title": "Crossed Book",
+              "type": "boolean"
+            },
+            "duplicated_event": {
+              "default": false,
+              "title": "Duplicated Event",
+              "type": "boolean"
+            },
+            "gaps": {
+              "default": false,
+              "title": "Gaps",
+              "type": "boolean"
+            },
+            "impossible_book": {
+              "default": false,
+              "title": "Impossible Book",
+              "type": "boolean"
+            },
+            "missing_snapshot": {
+              "default": false,
+              "title": "Missing Snapshot",
+              "type": "boolean"
+            },
+            "negative_size": {
+              "default": false,
+              "title": "Negative Size",
+              "type": "boolean"
+            },
+            "out_of_order": {
+              "default": false,
+              "title": "Out Of Order",
+              "type": "boolean"
+            },
+            "reasons": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Reasons",
+              "type": "array"
+            },
+            "stale_stream": {
+              "default": false,
+              "title": "Stale Stream",
+              "type": "boolean"
+            },
+            "timestamp_regression": {
+              "default": false,
+              "title": "Timestamp Regression",
+              "type": "boolean"
+            },
+            "trade_safe": {
+              "default": true,
+              "title": "Trade Safe",
+              "type": "boolean"
+            },
+            "unknown_contract": {
+              "default": false,
+              "title": "Unknown Contract",
+              "type": "boolean"
+            }
+          },
+          "title": "DataQualityFlags",
+          "type": "object"
+        },
+        "FootprintLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "ask_executed": {
+              "default": 0,
+              "title": "Ask Executed",
+              "type": "integer"
+            },
+            "bid_executed": {
+              "default": 0,
+              "title": "Bid Executed",
+              "type": "integer"
+            },
+            "buy_imbalance": {
+              "default": false,
+              "title": "Buy Imbalance",
+              "type": "boolean"
+            },
+            "delta": {
+              "default": 0,
+              "title": "Delta",
+              "type": "integer"
+            },
+            "diagonal_buy_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Buy Ratio"
+            },
+            "diagonal_sell_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Diagonal Sell Ratio"
+            },
+            "price_ticks": {
+              "title": "Price Ticks",
+              "type": "integer"
+            },
+            "sell_imbalance": {
+              "default": false,
+              "title": "Sell Imbalance",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "price_ticks"
+          ],
+          "title": "FootprintLevel",
+          "type": "object"
+        },
+        "FootprintSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "delta": {
+              "title": "Delta",
+              "type": "integer"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "levels": {
+              "items": {
+                "$ref": "#/$defs/FootprintLevel"
+              },
+              "title": "Levels",
+              "type": "array"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "stacked_buy_imbalance_levels": {
+              "default": 0,
+              "title": "Stacked Buy Imbalance Levels",
+              "type": "integer"
+            },
+            "stacked_sell_imbalance_levels": {
+              "default": 0,
+              "title": "Stacked Sell Imbalance Levels",
+              "type": "integer"
+            },
+            "total_volume": {
+              "title": "Total Volume",
+              "type": "integer"
+            },
+            "ts_event_ns": {
+              "title": "Ts Event Ns",
+              "type": "integer"
+            },
+            "unfinished_auction_evidence": {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "title": "Unfinished Auction Evidence",
+              "type": "object"
+            },
+            "window_end_ns": {
+              "title": "Window End Ns",
+              "type": "integer"
+            },
+            "window_start_ns": {
+              "title": "Window Start Ns",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "ts_event_ns",
+            "instrument",
+            "active_contract",
+            "window_start_ns",
+            "window_end_ns",
+            "levels",
+            "total_volume",
+            "delta"
+          ],
+          "title": "FootprintSnapshot",
+          "type": "object"
+        },
+        "MarketState": {
+          "enum": [
+            "BALANCE",
+            "IMBALANCE_UP",
+            "IMBALANCE_DOWN",
+            "TRANSITION",
+            "UNKNOWN"
+          ],
+          "title": "MarketState",
+          "type": "string"
+        },
+        "ProfileZone": {
+          "additionalProperties": false,
+          "properties": {
+            "age_events": {
+              "default": 0,
+              "title": "Age Events",
+              "type": "integer"
+            },
+            "high_ticks": {
+              "title": "High Ticks",
+              "type": "integer"
+            },
+            "low_ticks": {
+              "title": "Low Ticks",
+              "type": "integer"
+            },
+            "neighboring_volume_ratio": {
+              "title": "Neighboring Volume Ratio",
+              "type": "number"
+            },
+            "persistence": {
+              "default": 1,
+              "title": "Persistence",
+              "type": "integer"
+            },
+            "relative_volume_metric": {
+              "title": "Relative Volume Metric",
+              "type": "number"
+            },
+            "retest_count": {
+              "default": 0,
+              "title": "Retest Count",
+              "type": "integer"
+            },
+            "width_ticks": {
+              "title": "Width Ticks",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "low_ticks",
+            "high_ticks",
+            "relative_volume_metric",
+            "neighboring_volume_ratio",
+            "width_ticks"
+          ],
+          "title": "ProfileZone",
+          "type": "object"
+        },
+        "VolumeProfileSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "active_contract": {
+              "title": "Active Contract",
+              "type": "string"
+            },
+            "end_ns": {
+              "title": "End Ns",
+              "type": "integer"
+            },
+            "hvn_zones": {
+              "items": {
+                "$ref": "#/$defs/ProfileZone"
+              },
+              "title": "Hvn Zones",
+              "type": "array"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "lvn_zones": {
+              "items": {
+                "$ref": "#/$defs/ProfileZone"
+              },
+              "title": "Lvn Zones",
+              "type": "array"
+            },
+            "poc_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Poc Ticks"
+            },
+            "profile_kind": {
+              "title": "Profile Kind",
+              "type": "string"
+            },
+            "profile_shape": {
+              "title": "Profile Shape",
+              "type": "string"
+            },
+            "schema_version": {
+              "default": "FABIO_MECHANICAL_V1",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "start_ns": {
+              "title": "Start Ns",
+              "type": "integer"
+            },
+            "total_volume": {
+              "title": "Total Volume",
+              "type": "integer"
+            },
+            "ts_event_ns": {
+              "title": "Ts Event Ns",
+              "type": "integer"
+            },
+            "vah_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Vah Ticks"
+            },
+            "val_ticks": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Val Ticks"
+            },
+            "value_area_fraction": {
+              "title": "Value Area Fraction",
+              "type": "number"
+            },
+            "volume_by_price": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "title": "Volume By Price",
+              "type": "object"
+            }
+          },
+          "required": [
+            "ts_event_ns",
+            "instrument",
+            "active_contract",
+            "profile_kind",
+            "start_ns",
+            "end_ns",
+            "poc_ticks",
+            "vah_ticks",
+            "val_ticks",
+            "hvn_zones",
+            "lvn_zones",
+            "volume_by_price",
+            "profile_shape",
+            "total_volume",
+            "value_area_fraction"
+          ],
+          "title": "VolumeProfileSnapshot",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "absorption_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Absorption Metrics",
+          "type": "object"
+        },
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "aggression_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Aggression Metrics",
+          "type": "object"
+        },
+        "auction": {
+          "$ref": "#/$defs/AuctionFeatureSnapshot"
+        },
+        "best_ask_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Best Ask Ticks"
+        },
+        "best_bid_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Best Bid Ticks"
+        },
+        "big_print_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Big Print Metrics",
+          "type": "object"
+        },
+        "cvd": {
+          "title": "Cvd",
+          "type": "integer"
+        },
+        "cvd_acceleration": {
+          "title": "Cvd Acceleration",
+          "type": "number"
+        },
+        "cvd_slope": {
+          "title": "Cvd Slope",
+          "type": "number"
+        },
+        "data_quality": {
+          "$ref": "#/$defs/DataQualityFlags"
+        },
+        "delta": {
+          "title": "Delta",
+          "type": "integer"
+        },
+        "dom_depth_metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Dom Depth Metrics",
+          "type": "object"
+        },
+        "footprint": {
+          "$ref": "#/$defs/FootprintSnapshot"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "last_trade_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Trade Ticks"
+        },
+        "liquidity_pulling_stacking": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Liquidity Pulling Stacking",
+          "type": "object"
+        },
+        "profiles": {
+          "items": {
+            "$ref": "#/$defs/VolumeProfileSnapshot"
+          },
+          "title": "Profiles",
+          "type": "array"
+        },
+        "provenance": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Provenance",
+          "type": "object"
+        },
+        "relevant_hvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Relevant Hvn Zones",
+          "type": "array"
+        },
+        "relevant_lvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Relevant Lvn Zones",
+          "type": "array"
+        },
+        "relevant_poc_candidates": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Relevant Poc Candidates",
+          "type": "array"
+        },
+        "rolling_delta": {
+          "title": "Rolling Delta",
+          "type": "integer"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session": {
+          "title": "Session",
+          "type": "string"
+        },
+        "stale_data_flags": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "title": "Stale Data Flags",
+          "type": "object"
+        },
+        "structure_features": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Structure Features",
+          "type": "object"
+        },
+        "timestamp_ns": {
+          "title": "Timestamp Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "timestamp_ns",
+        "instrument",
+        "active_contract",
+        "session",
+        "best_bid_ticks",
+        "best_ask_ticks",
+        "last_trade_ticks",
+        "auction",
+        "profiles",
+        "relevant_lvn_zones",
+        "relevant_hvn_zones",
+        "relevant_poc_candidates",
+        "delta",
+        "cvd",
+        "rolling_delta",
+        "cvd_slope",
+        "cvd_acceleration",
+        "footprint",
+        "aggression_metrics",
+        "absorption_metrics",
+        "big_print_metrics",
+        "dom_depth_metrics",
+        "liquidity_pulling_stacking",
+        "data_quality"
+      ],
+      "title": "MarketFeatureSnapshot",
+      "type": "object"
+    },
+    "TradePrint": {
+      "$defs": {
+        "Side": {
+          "enum": [
+            "BID",
+            "ASK",
+            "NONE"
+          ],
+          "title": "Side",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "aggressor_side": {
+          "$ref": "#/$defs/Side"
+        },
+        "initiator_source": {
+          "default": "provider",
+          "enum": [
+            "provider",
+            "quote_fallback",
+            "unknown"
+          ],
+          "title": "Initiator Source",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "price_ticks": {
+          "title": "Price Ticks",
+          "type": "integer"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sequence": {
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "size": {
+          "exclusiveMinimum": 0,
+          "title": "Size",
+          "type": "integer"
+        },
+        "ts_event_ns": {
+          "minimum": 0,
+          "title": "Ts Event Ns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "sequence",
+        "instrument",
+        "active_contract",
+        "price_ticks",
+        "size",
+        "aggressor_side"
+      ],
+      "title": "TradePrint",
+      "type": "object"
+    },
+    "VolumeProfileSnapshot": {
+      "$defs": {
+        "ProfileZone": {
+          "additionalProperties": false,
+          "properties": {
+            "age_events": {
+              "default": 0,
+              "title": "Age Events",
+              "type": "integer"
+            },
+            "high_ticks": {
+              "title": "High Ticks",
+              "type": "integer"
+            },
+            "low_ticks": {
+              "title": "Low Ticks",
+              "type": "integer"
+            },
+            "neighboring_volume_ratio": {
+              "title": "Neighboring Volume Ratio",
+              "type": "number"
+            },
+            "persistence": {
+              "default": 1,
+              "title": "Persistence",
+              "type": "integer"
+            },
+            "relative_volume_metric": {
+              "title": "Relative Volume Metric",
+              "type": "number"
+            },
+            "retest_count": {
+              "default": 0,
+              "title": "Retest Count",
+              "type": "integer"
+            },
+            "width_ticks": {
+              "title": "Width Ticks",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "low_ticks",
+            "high_ticks",
+            "relative_volume_metric",
+            "neighboring_volume_ratio",
+            "width_ticks"
+          ],
+          "title": "ProfileZone",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "active_contract": {
+          "title": "Active Contract",
+          "type": "string"
+        },
+        "end_ns": {
+          "title": "End Ns",
+          "type": "integer"
+        },
+        "hvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Hvn Zones",
+          "type": "array"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "lvn_zones": {
+          "items": {
+            "$ref": "#/$defs/ProfileZone"
+          },
+          "title": "Lvn Zones",
+          "type": "array"
+        },
+        "poc_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Poc Ticks"
+        },
+        "profile_kind": {
+          "title": "Profile Kind",
+          "type": "string"
+        },
+        "profile_shape": {
+          "title": "Profile Shape",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "start_ns": {
+          "title": "Start Ns",
+          "type": "integer"
+        },
+        "total_volume": {
+          "title": "Total Volume",
+          "type": "integer"
+        },
+        "ts_event_ns": {
+          "title": "Ts Event Ns",
+          "type": "integer"
+        },
+        "vah_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Vah Ticks"
+        },
+        "val_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Val Ticks"
+        },
+        "value_area_fraction": {
+          "title": "Value Area Fraction",
+          "type": "number"
+        },
+        "volume_by_price": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Volume By Price",
+          "type": "object"
+        }
+      },
+      "required": [
+        "ts_event_ns",
+        "instrument",
+        "active_contract",
+        "profile_kind",
+        "start_ns",
+        "end_ns",
+        "poc_ticks",
+        "vah_ticks",
+        "val_ticks",
+        "hvn_zones",
+        "lvn_zones",
+        "volume_by_price",
+        "profile_shape",
+        "total_volume",
+        "value_area_fraction"
+      ],
+      "title": "VolumeProfileSnapshot",
+      "type": "object"
+    }
+  }
+}

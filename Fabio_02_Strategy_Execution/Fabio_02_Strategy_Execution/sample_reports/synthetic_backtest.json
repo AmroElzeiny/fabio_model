@@ -1,0 +1,76 @@
+{
+  "ledger": [
+    {
+      "instrument": "MNQ",
+      "direction": "LONG",
+      "quantity": "10",
+      "entry": "101.50",
+      "exit": "105",
+      "gross_pnl": "70.00",
+      "fees": "42.0",
+      "net_pnl": "28.00",
+      "r_multiple": "1.12",
+      "exit_reason": "TARGET",
+      "mfe_ticks": "14",
+      "mae_ticks": "0",
+      "setup_type": "TREND",
+      "candidate_id": "0000b95d-0f94-4e65-9999-7d82c278a280",
+      "config_hash": "3a63fc76b10b71eaba27909f9ea5012b6dcf944c635b5a2ce3aa10b4f55f6927"
+    }
+  ],
+  "events": [
+    {
+      "event_index": 1,
+      "type": "RISK",
+      "candidate_id": "0000b95d-0f94-4e65-9999-7d82c278a280",
+      "allowed": true,
+      "reason": "allowed"
+    },
+    {
+      "event_index": 1,
+      "type": "EXECUTION",
+      "candidate_id": "0000b95d-0f94-4e65-9999-7d82c278a280",
+      "status": "FILLED",
+      "filled": "10",
+      "avg": "101.50"
+    },
+    {
+      "event_index": 2,
+      "type": "EXIT",
+      "reason": "TARGET",
+      "price": "105",
+      "pnl": "28.00",
+      "candidate_id": "0000b95d-0f94-4e65-9999-7d82c278a280"
+    }
+  ],
+  "equity_curve": [
+    {
+      "event_index": 1,
+      "timestamp": "2026-01-05T14:30:01+00:00",
+      "equity": "99969.00",
+      "drawdown": "0.00031"
+    },
+    {
+      "event_index": 2,
+      "timestamp": "2026-01-05T14:30:02+00:00",
+      "equity": "100028.00",
+      "drawdown": "0"
+    }
+  ],
+  "state_transitions": [
+    {
+      "event_index": 1,
+      "timestamp": "2026-01-05T14:30:01+00:00",
+      "trend": "ACTIVE_TRADE",
+      "mean_reversion": "BALANCED"
+    },
+    {
+      "event_index": 2,
+      "timestamp": "2026-01-05T14:30:02+00:00",
+      "trend": "EXIT",
+      "mean_reversion": "BREAKOUT_ATTEMPT"
+    }
+  ],
+  "ending_equity": "100028.00",
+  "max_drawdown": "0.00031"
+}

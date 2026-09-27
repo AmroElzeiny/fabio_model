@@ -1,0 +1,170 @@
+{
+  "$defs": {
+    "ProfileZone": {
+      "additionalProperties": false,
+      "properties": {
+        "age_events": {
+          "default": 0,
+          "title": "Age Events",
+          "type": "integer"
+        },
+        "high_ticks": {
+          "title": "High Ticks",
+          "type": "integer"
+        },
+        "low_ticks": {
+          "title": "Low Ticks",
+          "type": "integer"
+        },
+        "neighboring_volume_ratio": {
+          "title": "Neighboring Volume Ratio",
+          "type": "number"
+        },
+        "persistence": {
+          "default": 1,
+          "title": "Persistence",
+          "type": "integer"
+        },
+        "relative_volume_metric": {
+          "title": "Relative Volume Metric",
+          "type": "number"
+        },
+        "retest_count": {
+          "default": 0,
+          "title": "Retest Count",
+          "type": "integer"
+        },
+        "width_ticks": {
+          "title": "Width Ticks",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "low_ticks",
+        "high_ticks",
+        "relative_volume_metric",
+        "neighboring_volume_ratio",
+        "width_ticks"
+      ],
+      "title": "ProfileZone",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "active_contract": {
+      "title": "Active Contract",
+      "type": "string"
+    },
+    "end_ns": {
+      "title": "End Ns",
+      "type": "integer"
+    },
+    "hvn_zones": {
+      "items": {
+        "$ref": "#/$defs/ProfileZone"
+      },
+      "title": "Hvn Zones",
+      "type": "array"
+    },
+    "instrument": {
+      "title": "Instrument",
+      "type": "string"
+    },
+    "lvn_zones": {
+      "items": {
+        "$ref": "#/$defs/ProfileZone"
+      },
+      "title": "Lvn Zones",
+      "type": "array"
+    },
+    "poc_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Poc Ticks"
+    },
+    "profile_kind": {
+      "title": "Profile Kind",
+      "type": "string"
+    },
+    "profile_shape": {
+      "title": "Profile Shape",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "FABIO_MECHANICAL_V1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "start_ns": {
+      "title": "Start Ns",
+      "type": "integer"
+    },
+    "total_volume": {
+      "title": "Total Volume",
+      "type": "integer"
+    },
+    "ts_event_ns": {
+      "title": "Ts Event Ns",
+      "type": "integer"
+    },
+    "vah_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Vah Ticks"
+    },
+    "val_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Val Ticks"
+    },
+    "value_area_fraction": {
+      "title": "Value Area Fraction",
+      "type": "number"
+    },
+    "volume_by_price": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Volume By Price",
+      "type": "object"
+    }
+  },
+  "required": [
+    "ts_event_ns",
+    "instrument",
+    "active_contract",
+    "profile_kind",
+    "start_ns",
+    "end_ns",
+    "poc_ticks",
+    "vah_ticks",
+    "val_ticks",
+    "hvn_zones",
+    "lvn_zones",
+    "volume_by_price",
+    "profile_shape",
+    "total_volume",
+    "value_area_fraction"
+  ],
+  "title": "VolumeProfileSnapshot",
+  "type": "object"
+}

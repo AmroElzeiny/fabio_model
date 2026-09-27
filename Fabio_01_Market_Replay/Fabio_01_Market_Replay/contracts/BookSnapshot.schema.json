@@ -1,0 +1,146 @@
+{
+  "$defs": {
+    "BookLevel": {
+      "additionalProperties": false,
+      "properties": {
+        "order_count": {
+          "minimum": 0,
+          "title": "Order Count",
+          "type": "integer"
+        },
+        "price_ticks": {
+          "title": "Price Ticks",
+          "type": "integer"
+        },
+        "size": {
+          "minimum": 0,
+          "title": "Size",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "price_ticks",
+        "size",
+        "order_count"
+      ],
+      "title": "BookLevel",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "active_contract": {
+      "title": "Active Contract",
+      "type": "string"
+    },
+    "asks": {
+      "items": {
+        "$ref": "#/$defs/BookLevel"
+      },
+      "title": "Asks",
+      "type": "array"
+    },
+    "best_ask": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BookLevel"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "best_bid": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BookLevel"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bids": {
+      "items": {
+        "$ref": "#/$defs/BookLevel"
+      },
+      "title": "Bids",
+      "type": "array"
+    },
+    "dom_imbalance": {
+      "title": "Dom Imbalance",
+      "type": "number"
+    },
+    "instrument": {
+      "title": "Instrument",
+      "type": "string"
+    },
+    "microprice_ticks": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Microprice Ticks"
+    },
+    "queue_metrics": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Queue Metrics",
+      "type": "object"
+    },
+    "schema_version": {
+      "default": "FABIO_MECHANICAL_V1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sequence": {
+      "title": "Sequence",
+      "type": "integer"
+    },
+    "spread_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Spread Ticks"
+    },
+    "ts_event_ns": {
+      "title": "Ts Event Ns",
+      "type": "integer"
+    },
+    "weighted_ask_depth": {
+      "title": "Weighted Ask Depth",
+      "type": "number"
+    },
+    "weighted_bid_depth": {
+      "title": "Weighted Bid Depth",
+      "type": "number"
+    }
+  },
+  "required": [
+    "ts_event_ns",
+    "sequence",
+    "instrument",
+    "active_contract",
+    "best_bid",
+    "best_ask",
+    "bids",
+    "asks",
+    "spread_ticks",
+    "weighted_bid_depth",
+    "weighted_ask_depth",
+    "dom_imbalance"
+  ],
+  "title": "BookSnapshot",
+  "type": "object"
+}

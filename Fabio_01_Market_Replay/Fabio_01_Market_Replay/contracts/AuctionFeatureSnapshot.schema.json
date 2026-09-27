@@ -1,0 +1,233 @@
+{
+  "$defs": {
+    "MarketState": {
+      "enum": [
+        "BALANCE",
+        "IMBALANCE_UP",
+        "IMBALANCE_DOWN",
+        "TRANSITION",
+        "UNKNOWN"
+      ],
+      "title": "MarketState",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "acceptance_outside_value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Acceptance Outside Value"
+    },
+    "active_contract": {
+      "title": "Active Contract",
+      "type": "string"
+    },
+    "cvd_persistence": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Cvd Persistence"
+    },
+    "delta_persistence": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Delta Persistence"
+    },
+    "directional_efficiency": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Directional Efficiency"
+    },
+    "impulse_velocity_ticks_per_event": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Impulse Velocity Ticks Per Event"
+    },
+    "instrument": {
+      "title": "Instrument",
+      "type": "string"
+    },
+    "poc_migration_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Poc Migration Ticks"
+    },
+    "pullback_depth_fraction": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Pullback Depth Fraction"
+    },
+    "range_expansion_ratio": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Range Expansion Ratio"
+    },
+    "raw": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Raw",
+      "type": "object"
+    },
+    "return_to_value_frequency": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Return To Value Frequency"
+    },
+    "schema_version": {
+      "default": "FABIO_MECHANICAL_V1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "state_candidate": {
+      "$ref": "#/$defs/MarketState"
+    },
+    "time_inside_value_fraction": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time Inside Value Fraction"
+    },
+    "time_outside_value_fraction": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time Outside Value Fraction"
+    },
+    "ts_event_ns": {
+      "title": "Ts Event Ns",
+      "type": "integer"
+    },
+    "vah_migration_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Vah Migration Ticks"
+    },
+    "val_migration_ticks": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Val Migration Ticks"
+    },
+    "value_area_overlap": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Value Area Overlap"
+    },
+    "vwap_slope_ticks_per_event": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Vwap Slope Ticks Per Event"
+    }
+  },
+  "required": [
+    "ts_event_ns",
+    "instrument",
+    "active_contract",
+    "state_candidate"
+  ],
+  "title": "AuctionFeatureSnapshot",
+  "type": "object"
+}

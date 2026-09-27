@@ -1,0 +1,58 @@
+version: baseline-v1
+AI_ENABLED: false
+strategy:
+  balance_value_overlap_min: 0.55
+  poc_migration_max: 4.0
+  directional_efficiency_min: 0.55
+  directional_efficiency_max_for_balance: 0.35
+  acceptance_event_count: 3
+  breakout_distance_ticks: 4.0
+  displacement_zscore_min: 1.0
+  impulse_min_ticks: 8.0
+  pullback_depth_min: 0.15
+  pullback_depth_max: 0.85
+  lvn_relative_volume_max: 0.55
+  lvn_neighbor_ratio: 0.70
+  lvn_min_width_ticks: 1
+  lvn_max_age_events: 100
+  lvn_max_retests: 3
+  aggression_delta_zscore: 1.0
+  aggression_persistence: 1
+  stacked_imbalance_ratio: 2.0
+  stacked_levels_min: 2
+  big_print_percentile: 0.90
+  cvd_slope_min: 0.10
+  absorption_efficiency_threshold: 0.75
+  rejection_speed_min: 0.30
+  stop_buffer_ticks: 2
+  setup_expiry_events: 40
+  data_quality_min: 0.80
+  stale_data_ms_max: 2500
+  severe_opposing_absorption: 0.80
+  session_windows:
+    trend: ["NEW_YORK"]
+    mean_reversion: ["LONDON", "NEW_YORK"]
+risk:
+  risk_fraction: 0.0035
+  max_risk_fraction: 0.005
+  max_daily_loss_fraction: 0.02
+  max_weekly_loss_fraction: 0.04
+  weekly_loss_lock_enabled: true
+  max_consecutive_losses: 4
+  max_concurrent_exposure_fraction: 0.02
+  max_position_contracts: 10
+  session_trade_cap: 6
+  cooldown_events: 2
+execution:
+  latency_ms: 10
+  default_slippage_ticks: 1
+  commission_per_contract: 2.10
+  fee_per_contract: 0.00
+  queue_fill_fraction: 0.50
+  max_gap_ticks: 20
+  allow_partial_fills: true
+research:
+  min_trades: 3
+  deterministic_seed: 42
+  early_exit_enabled: false
+  experimental_trailing_enabled: false

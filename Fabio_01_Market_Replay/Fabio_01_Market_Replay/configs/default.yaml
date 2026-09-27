@@ -1,0 +1,24 @@
+tick_size: 0.25
+top_n_depth: 10
+value_area_fraction: 0.70
+hvn_quantile: 0.75
+lvn_quantile: 0.25
+imbalance_ratio: 3.0
+stacked_levels: 3
+big_print_percentile: 0.95
+rolling_trade_window: 50
+stale_ns: 5000000000
+max_sequence_gap: 1000000
+session_name: CME_GLOBEX
+ny_session_start: "09:30"
+ny_session_end: "16:00"
+timezone: America/New_York
+absorption_price_progress_floor_ticks: 1.0
+absorption_ratio_scale: 20.0
+iceberg_replenishment_scale: 10.0
+known_contract_prefixes: [NQ, MNQ]
+market_state:
+  balance_efficiency_max: 0.35
+  imbalance_efficiency_min: 0.60
+  range_expansion_min: 1.20
+  delta_persistence_min: 0.60

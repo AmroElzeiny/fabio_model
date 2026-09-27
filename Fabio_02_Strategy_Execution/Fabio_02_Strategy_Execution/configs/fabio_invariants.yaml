@@ -1,0 +1,16 @@
+contract_version: FABIO_MECHANICAL_V1
+frozen: true
+rules:
+  context_before_entry: true
+  decision_order: [market_state, location, aggression]
+  separate_models: [trend, mean_reversion]
+  lvn_requires_directional_aggression: true
+  trend_sequence: [breakout, displacement, structure_break, impulse_profile, lvn_retest, aggression]
+  mean_reversion_sequence: [failed_breakout, no_acceptance, reclaim, reclaim_profile, lvn_retest, snapback_aggression]
+  primary_target_is_poc: true
+  stop_is_structural_invalidation: true
+  never_widen_stop: true
+  unsafe_data_blocks_trading: true
+  risk_locks_non_overridable: true
+  allowed_setups: [trend, mean_reversion]
+  ai_can_override_risk: false

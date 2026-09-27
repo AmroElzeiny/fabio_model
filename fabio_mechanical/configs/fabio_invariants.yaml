@@ -1,0 +1,28 @@
+# FROZEN Fabio invariants. The optimizer can never read-modify-write this file: no key here is
+# (or may ever be) present in search_space.yaml, and apply_strategy_params() rejects any key
+# outside the search space. Changing this file changes invariant_hash and invalidates OOS locks.
+contract_version: FABIO_MECHANICAL_V1
+frozen: true
+rules:
+  context_before_entry: true
+  decision_order: [market_state, location, aggression]
+  separate_models: [trend, mean_reversion]
+  lvn_requires_directional_aggression: true
+  lvn_touch_alone_is_never_entry: true
+  trend_sequence: [balance, breakout, displacement, structure_break, impulse_profile, lvn_retest, aggression, entry, balance_poc_target]
+  mean_reversion_sequence: [balance, breakout_attempt, no_acceptance, failed_auction, reclaim, reclaim_profile, lvn_retest, snapback_aggression, entry, balance_poc_target]
+  primary_target_is_poc: true
+  no_fixed_rr_target: true
+  stop_is_structural_invalidation: true
+  never_widen_stop: true
+  no_martingale_or_averaging_down: true
+  unsafe_data_blocks_trading: true
+  stale_data_blocks_trading: true
+  risk_locks_non_overridable: true
+  allowed_setups: [trend, mean_reversion]
+  ai_enabled: false
+  ai_can_override_risk: false
+  baseline_excluded_indicators: [RSI, MACD, EMA, SMA, BOLLINGER, STOCHASTIC, ICT, ML_PREDICTOR]
+  experimental_features_default_off: true
+  no_lookahead: true
+  no_candle_close_fills: true

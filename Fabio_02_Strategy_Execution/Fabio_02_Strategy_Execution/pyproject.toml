@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fabio-strategy-execution"
+version = "1.0.0"
+description = "Mechanical Fabio Valentini-style auction-market strategy research and execution simulator"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.8", "PyYAML>=6.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+fabio = "fabio.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fabio*", "contracts*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

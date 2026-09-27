@@ -1,0 +1,72 @@
+{
+  "$defs": {
+    "Side": {
+      "enum": [
+        "BID",
+        "ASK",
+        "NONE"
+      ],
+      "title": "Side",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "active_contract": {
+      "title": "Active Contract",
+      "type": "string"
+    },
+    "aggressor_side": {
+      "$ref": "#/$defs/Side"
+    },
+    "initiator_source": {
+      "default": "provider",
+      "enum": [
+        "provider",
+        "quote_fallback",
+        "unknown"
+      ],
+      "title": "Initiator Source",
+      "type": "string"
+    },
+    "instrument": {
+      "title": "Instrument",
+      "type": "string"
+    },
+    "price_ticks": {
+      "title": "Price Ticks",
+      "type": "integer"
+    },
+    "schema_version": {
+      "default": "FABIO_MECHANICAL_V1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sequence": {
+      "minimum": 0,
+      "title": "Sequence",
+      "type": "integer"
+    },
+    "size": {
+      "exclusiveMinimum": 0,
+      "title": "Size",
+      "type": "integer"
+    },
+    "ts_event_ns": {
+      "minimum": 0,
+      "title": "Ts Event Ns",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "ts_event_ns",
+    "sequence",
+    "instrument",
+    "active_contract",
+    "price_ticks",
+    "size",
+    "aggressor_side"
+  ],
+  "title": "TradePrint",
+  "type": "object"
+}

@@ -1,0 +1,1352 @@
+[
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 1,
+      "latency_ms": 0
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 1,
+      "latency_ms": 10
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 1,
+      "latency_ms": 50
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 1,
+      "latency_ms": 100
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 1,
+      "latency_ms": 250
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 2,
+      "latency_ms": 0
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 23.0,
+      "net_return": 0.00023,
+      "expectancy": 23.0,
+      "profit_factor": Infinity,
+      "median_r": 0.7666666666666667,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 23.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 23.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 2,
+      "latency_ms": 10
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 23.0,
+      "net_return": 0.00023,
+      "expectancy": 23.0,
+      "profit_factor": Infinity,
+      "median_r": 0.7666666666666667,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 23.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 23.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 2,
+      "latency_ms": 50
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 23.0,
+      "net_return": 0.00023,
+      "expectancy": 23.0,
+      "profit_factor": Infinity,
+      "median_r": 0.7666666666666667,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 23.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 23.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 2,
+      "latency_ms": 100
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 23.0,
+      "net_return": 0.00023,
+      "expectancy": 23.0,
+      "profit_factor": Infinity,
+      "median_r": 0.7666666666666667,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 23.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 23.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 2,
+      "latency_ms": 250
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 23.0,
+      "net_return": 0.00023,
+      "expectancy": 23.0,
+      "profit_factor": Infinity,
+      "median_r": 0.7666666666666667,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 23.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 23.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 3,
+      "latency_ms": 0
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 18.0,
+      "net_return": 0.00018,
+      "expectancy": 18.0,
+      "profit_factor": Infinity,
+      "median_r": 0.5142857142857142,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 18.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 18.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 3,
+      "latency_ms": 10
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 18.0,
+      "net_return": 0.00018,
+      "expectancy": 18.0,
+      "profit_factor": Infinity,
+      "median_r": 0.5142857142857142,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 18.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 18.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 3,
+      "latency_ms": 50
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 18.0,
+      "net_return": 0.00018,
+      "expectancy": 18.0,
+      "profit_factor": Infinity,
+      "median_r": 0.5142857142857142,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 18.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 18.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 3,
+      "latency_ms": 100
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 18.0,
+      "net_return": 0.00018,
+      "expectancy": 18.0,
+      "profit_factor": Infinity,
+      "median_r": 0.5142857142857142,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 18.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 18.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 1,
+      "slippage_x": 3,
+      "latency_ms": 250
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 18.0,
+      "net_return": 0.00018,
+      "expectancy": 18.0,
+      "profit_factor": Infinity,
+      "median_r": 0.5142857142857142,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 18.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 18.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 1,
+      "latency_ms": 0
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -14.0,
+      "net_return": -0.00014,
+      "expectancy": -14.0,
+      "profit_factor": 0.0,
+      "median_r": -0.56,
+      "max_drawdown": 0.00014,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -14.0,
+      "tail_loss_mean": -14.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 1,
+      "latency_ms": 10
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -14.0,
+      "net_return": -0.00014,
+      "expectancy": -14.0,
+      "profit_factor": 0.0,
+      "median_r": -0.56,
+      "max_drawdown": 0.00014,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -14.0,
+      "tail_loss_mean": -14.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 1,
+      "latency_ms": 50
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -14.0,
+      "net_return": -0.00014,
+      "expectancy": -14.0,
+      "profit_factor": 0.0,
+      "median_r": -0.56,
+      "max_drawdown": 0.00014,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -14.0,
+      "tail_loss_mean": -14.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 1,
+      "latency_ms": 100
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -14.0,
+      "net_return": -0.00014,
+      "expectancy": -14.0,
+      "profit_factor": 0.0,
+      "median_r": -0.56,
+      "max_drawdown": 0.00014,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -14.0,
+      "tail_loss_mean": -14.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 1,
+      "latency_ms": 250
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -14.0,
+      "net_return": -0.00014,
+      "expectancy": -14.0,
+      "profit_factor": 0.0,
+      "median_r": -0.56,
+      "max_drawdown": 0.00014,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -14.0,
+      "tail_loss_mean": -14.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 2,
+      "latency_ms": 0
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -19.0,
+      "net_return": -0.00019,
+      "expectancy": -19.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6333333333333333,
+      "max_drawdown": 0.00019,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -19.0,
+      "tail_loss_mean": -19.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 2,
+      "latency_ms": 10
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -19.0,
+      "net_return": -0.00019,
+      "expectancy": -19.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6333333333333333,
+      "max_drawdown": 0.00019,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -19.0,
+      "tail_loss_mean": -19.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 2,
+      "latency_ms": 50
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -19.0,
+      "net_return": -0.00019,
+      "expectancy": -19.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6333333333333333,
+      "max_drawdown": 0.00019,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -19.0,
+      "tail_loss_mean": -19.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 2,
+      "latency_ms": 100
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -19.0,
+      "net_return": -0.00019,
+      "expectancy": -19.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6333333333333333,
+      "max_drawdown": 0.00019,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -19.0,
+      "tail_loss_mean": -19.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 2,
+      "latency_ms": 250
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -19.0,
+      "net_return": -0.00019,
+      "expectancy": -19.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6333333333333333,
+      "max_drawdown": 0.00019,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -19.0,
+      "tail_loss_mean": -19.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 13.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 3,
+      "latency_ms": 0
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -24.0,
+      "net_return": -0.00024,
+      "expectancy": -24.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6857142857142857,
+      "max_drawdown": 0.00024,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -24.0,
+      "tail_loss_mean": -24.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 3,
+      "latency_ms": 10
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -24.0,
+      "net_return": -0.00024,
+      "expectancy": -24.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6857142857142857,
+      "max_drawdown": 0.00024,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -24.0,
+      "tail_loss_mean": -24.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 3,
+      "latency_ms": 50
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -24.0,
+      "net_return": -0.00024,
+      "expectancy": -24.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6857142857142857,
+      "max_drawdown": 0.00024,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -24.0,
+      "tail_loss_mean": -24.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 3,
+      "latency_ms": 100
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -24.0,
+      "net_return": -0.00024,
+      "expectancy": -24.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6857142857142857,
+      "max_drawdown": 0.00024,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -24.0,
+      "tail_loss_mean": -24.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "fees_x": 2,
+      "slippage_x": 3,
+      "latency_ms": 250
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": -24.0,
+      "net_return": -0.00024,
+      "expectancy": -24.0,
+      "profit_factor": 0.0,
+      "median_r": -0.6857142857142857,
+      "max_drawdown": 0.00024,
+      "sharpe": 0.0,
+      "sortino": -1.0,
+      "calmar": -1.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": -24.0,
+      "tail_loss_mean": -24.0,
+      "longest_loss_streak": 1,
+      "average_mfe_ticks": 12.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "threshold_jitter": {
+        "jitter": 0.05
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "level_error_plusminus_1_tick": {
+        "level_error_ticks": 1
+      }
+    },
+    "metrics": {
+      "trades": 0,
+      "net_pnl": 0,
+      "net_return": 0.0,
+      "expectancy": 0.0,
+      "profit_factor": 0.0,
+      "median_r": 0.0,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": 0.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 0.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 0.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 0.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "missed_events_10pct": {
+        "miss_prob": 0.1
+      }
+    },
+    "metrics": {
+      "trades": 0,
+      "net_pnl": 0,
+      "net_return": 0.0,
+      "expectancy": 0.0,
+      "profit_factor": 0.0,
+      "median_r": 0.0,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": 0.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 0.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 0.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 0.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "session_NEW_YORK": {
+        "session": "NEW_YORK"
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "session_LONDON": {
+        "session": "LONDON"
+      }
+    },
+    "metrics": {
+      "trades": 0,
+      "net_pnl": 0,
+      "net_return": 0.0,
+      "expectancy": 0.0,
+      "profit_factor": 0.0,
+      "median_r": 0.0,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": 0.0,
+      "win_rate": 0.0,
+      "average_win": 0.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 0.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 0.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 0.0,
+      "monthly_stability": 0.0,
+      "regime_stability": 0.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "volatility_LOW": {
+        "volatility": "LOW"
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "volatility_HIGH": {
+        "volatility": "HIGH"
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "regime_TREND": {
+        "regime": "TREND"
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "regime_BALANCE": {
+        "regime": "BALANCE"
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "news_day_true": {
+        "news": true
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "news_day_false": {
+        "news": false
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "roll_date_minus_1d": {
+        "time_shift_days": -1
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "roll_date_plus_1d": {
+        "time_shift_days": 1
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "instrument_NQ": {
+        "instrument": "NQ"
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 658.0,
+      "net_return": 0.00658,
+      "expectancy": 658.0,
+      "profit_factor": Infinity,
+      "median_r": 2.632,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 658.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 658.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  },
+  {
+    "scenario": {
+      "instrument_MNQ": {
+        "instrument": "MNQ"
+      }
+    },
+    "metrics": {
+      "trades": 1,
+      "net_pnl": 28.0,
+      "net_return": 0.00028,
+      "expectancy": 28.0,
+      "profit_factor": Infinity,
+      "median_r": 1.12,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "calmar": Infinity,
+      "win_rate": 1.0,
+      "average_win": 28.0,
+      "average_loss": 0.0,
+      "tail_loss_mean": 28.0,
+      "longest_loss_streak": 0,
+      "average_mfe_ticks": 14.0,
+      "average_mae_ticks": 0.0,
+      "trades_per_month": 1.0,
+      "monthly_stability": 1.0,
+      "regime_stability": 1.0,
+      "cost_sensitivity": null
+    }
+  }
+]

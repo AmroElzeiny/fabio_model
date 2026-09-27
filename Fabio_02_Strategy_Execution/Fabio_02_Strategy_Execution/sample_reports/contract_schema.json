@@ -1,0 +1,1822 @@
+{
+  "contract_version": "FABIO_MECHANICAL_V1",
+  "models": {
+    "MarketEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "event_type": {
+          "title": "Event Type",
+          "type": "string"
+        },
+        "sequence": {
+          "default": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "payload": {
+          "additionalProperties": true,
+          "title": "Payload",
+          "type": "object"
+        }
+      },
+      "required": [
+        "timestamp",
+        "instrument",
+        "event_type"
+      ],
+      "title": "MarketEvent",
+      "type": "object"
+    },
+    "TradePrint": {
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Price"
+        },
+        "size": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Size"
+        },
+        "aggressor": {
+          "default": "UNKNOWN",
+          "enum": [
+            "BUY",
+            "SELL",
+            "UNKNOWN"
+          ],
+          "title": "Aggressor",
+          "type": "string"
+        }
+      },
+      "required": [
+        "timestamp",
+        "price",
+        "size"
+      ],
+      "title": "TradePrint",
+      "type": "object"
+    },
+    "BookSnapshot": {
+      "$defs": {
+        "BookLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "price": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Price"
+            },
+            "size": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Size"
+            },
+            "queue_ahead": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Queue Ahead"
+            }
+          },
+          "required": [
+            "price",
+            "size"
+          ],
+          "title": "BookLevel",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "bids": {
+          "items": {
+            "$ref": "#/$defs/BookLevel"
+          },
+          "title": "Bids",
+          "type": "array"
+        },
+        "asks": {
+          "items": {
+            "$ref": "#/$defs/BookLevel"
+          },
+          "title": "Asks",
+          "type": "array"
+        },
+        "mbo_available": {
+          "default": false,
+          "title": "Mbo Available",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "timestamp"
+      ],
+      "title": "BookSnapshot",
+      "type": "object"
+    },
+    "FootprintSnapshot": {
+      "$defs": {
+        "FootprintLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "price": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Price"
+            },
+            "bid_volume": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Bid Volume"
+            },
+            "ask_volume": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Ask Volume"
+            },
+            "delta": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Delta"
+            },
+            "imbalance_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "1",
+              "title": "Imbalance Ratio"
+            }
+          },
+          "required": [
+            "price"
+          ],
+          "title": "FootprintLevel",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "levels": {
+          "items": {
+            "$ref": "#/$defs/FootprintLevel"
+          },
+          "title": "Levels",
+          "type": "array"
+        },
+        "stacked_buy_levels": {
+          "default": 0,
+          "title": "Stacked Buy Levels",
+          "type": "integer"
+        },
+        "stacked_sell_levels": {
+          "default": 0,
+          "title": "Stacked Sell Levels",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "timestamp"
+      ],
+      "title": "FootprintSnapshot",
+      "type": "object"
+    },
+    "VolumeProfileSnapshot": {
+      "$defs": {
+        "VolumeNode": {
+          "additionalProperties": false,
+          "properties": {
+            "low": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Low"
+            },
+            "high": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "High"
+            },
+            "relative_volume": {
+              "title": "Relative Volume",
+              "type": "number"
+            },
+            "age_events": {
+              "default": 0,
+              "title": "Age Events",
+              "type": "integer"
+            },
+            "retests": {
+              "default": 0,
+              "title": "Retests",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "low",
+            "high",
+            "relative_volume"
+          ],
+          "title": "VolumeNode",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "poc": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Poc"
+        },
+        "vah": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Vah"
+        },
+        "val": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Val"
+        },
+        "hvn_zones": {
+          "items": {
+            "$ref": "#/$defs/VolumeNode"
+          },
+          "title": "Hvn Zones",
+          "type": "array"
+        },
+        "lvn_zones": {
+          "items": {
+            "$ref": "#/$defs/VolumeNode"
+          },
+          "title": "Lvn Zones",
+          "type": "array"
+        }
+      },
+      "required": [
+        "timestamp",
+        "poc",
+        "vah",
+        "val"
+      ],
+      "title": "VolumeProfileSnapshot",
+      "type": "object"
+    },
+    "AuctionFeatureSnapshot": {
+      "$defs": {
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "balanced": {
+          "title": "Balanced",
+          "type": "boolean"
+        },
+        "out_of_balance": {
+          "title": "Out Of Balance",
+          "type": "boolean"
+        },
+        "balance_low": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Balance Low"
+        },
+        "balance_high": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Balance High"
+        },
+        "balance_poc": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Balance Poc"
+        },
+        "value_overlap": {
+          "default": 1.0,
+          "title": "Value Overlap",
+          "type": "number"
+        },
+        "poc_migration_ticks": {
+          "default": 0.0,
+          "title": "Poc Migration Ticks",
+          "type": "number"
+        },
+        "directional_efficiency": {
+          "default": 0.0,
+          "title": "Directional Efficiency",
+          "type": "number"
+        },
+        "breakout_side": {
+          "$ref": "#/$defs/Direction",
+          "default": "FLAT"
+        },
+        "breakout_distance_ticks": {
+          "default": 0.0,
+          "title": "Breakout Distance Ticks",
+          "type": "number"
+        },
+        "acceptance_events": {
+          "default": 0,
+          "title": "Acceptance Events",
+          "type": "integer"
+        },
+        "displacement_zscore": {
+          "default": 0.0,
+          "title": "Displacement Zscore",
+          "type": "number"
+        },
+        "structure_break": {
+          "default": false,
+          "title": "Structure Break",
+          "type": "boolean"
+        },
+        "impulse_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse Id"
+        },
+        "impulse_low": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse Low"
+        },
+        "impulse_high": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impulse High"
+        },
+        "impulse_ticks": {
+          "default": 0.0,
+          "title": "Impulse Ticks",
+          "type": "number"
+        },
+        "reclaim_inside_balance": {
+          "default": false,
+          "title": "Reclaim Inside Balance",
+          "type": "boolean"
+        },
+        "failed_auction": {
+          "default": false,
+          "title": "Failed Auction",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "balanced",
+        "out_of_balance",
+        "balance_low",
+        "balance_high",
+        "balance_poc"
+      ],
+      "title": "AuctionFeatureSnapshot",
+      "type": "object"
+    },
+    "MarketFeatureSnapshot": {
+      "$defs": {
+        "AuctionFeatureSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "balanced": {
+              "title": "Balanced",
+              "type": "boolean"
+            },
+            "out_of_balance": {
+              "title": "Out Of Balance",
+              "type": "boolean"
+            },
+            "balance_low": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Balance Low"
+            },
+            "balance_high": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Balance High"
+            },
+            "balance_poc": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Balance Poc"
+            },
+            "value_overlap": {
+              "default": 1.0,
+              "title": "Value Overlap",
+              "type": "number"
+            },
+            "poc_migration_ticks": {
+              "default": 0.0,
+              "title": "Poc Migration Ticks",
+              "type": "number"
+            },
+            "directional_efficiency": {
+              "default": 0.0,
+              "title": "Directional Efficiency",
+              "type": "number"
+            },
+            "breakout_side": {
+              "$ref": "#/$defs/Direction",
+              "default": "FLAT"
+            },
+            "breakout_distance_ticks": {
+              "default": 0.0,
+              "title": "Breakout Distance Ticks",
+              "type": "number"
+            },
+            "acceptance_events": {
+              "default": 0,
+              "title": "Acceptance Events",
+              "type": "integer"
+            },
+            "displacement_zscore": {
+              "default": 0.0,
+              "title": "Displacement Zscore",
+              "type": "number"
+            },
+            "structure_break": {
+              "default": false,
+              "title": "Structure Break",
+              "type": "boolean"
+            },
+            "impulse_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse Id"
+            },
+            "impulse_low": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse Low"
+            },
+            "impulse_high": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Impulse High"
+            },
+            "impulse_ticks": {
+              "default": 0.0,
+              "title": "Impulse Ticks",
+              "type": "number"
+            },
+            "reclaim_inside_balance": {
+              "default": false,
+              "title": "Reclaim Inside Balance",
+              "type": "boolean"
+            },
+            "failed_auction": {
+              "default": false,
+              "title": "Failed Auction",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "balanced",
+            "out_of_balance",
+            "balance_low",
+            "balance_high",
+            "balance_poc"
+          ],
+          "title": "AuctionFeatureSnapshot",
+          "type": "object"
+        },
+        "BookLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "price": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Price"
+            },
+            "size": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Size"
+            },
+            "queue_ahead": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Queue Ahead"
+            }
+          },
+          "required": [
+            "price",
+            "size"
+          ],
+          "title": "BookLevel",
+          "type": "object"
+        },
+        "BookSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "timestamp": {
+              "format": "date-time",
+              "title": "Timestamp",
+              "type": "string"
+            },
+            "bids": {
+              "items": {
+                "$ref": "#/$defs/BookLevel"
+              },
+              "title": "Bids",
+              "type": "array"
+            },
+            "asks": {
+              "items": {
+                "$ref": "#/$defs/BookLevel"
+              },
+              "title": "Asks",
+              "type": "array"
+            },
+            "mbo_available": {
+              "default": false,
+              "title": "Mbo Available",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "timestamp"
+          ],
+          "title": "BookSnapshot",
+          "type": "object"
+        },
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "FootprintLevel": {
+          "additionalProperties": false,
+          "properties": {
+            "price": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Price"
+            },
+            "bid_volume": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Bid Volume"
+            },
+            "ask_volume": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Ask Volume"
+            },
+            "delta": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Delta"
+            },
+            "imbalance_ratio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "1",
+              "title": "Imbalance Ratio"
+            }
+          },
+          "required": [
+            "price"
+          ],
+          "title": "FootprintLevel",
+          "type": "object"
+        },
+        "FootprintSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "timestamp": {
+              "format": "date-time",
+              "title": "Timestamp",
+              "type": "string"
+            },
+            "levels": {
+              "items": {
+                "$ref": "#/$defs/FootprintLevel"
+              },
+              "title": "Levels",
+              "type": "array"
+            },
+            "stacked_buy_levels": {
+              "default": 0,
+              "title": "Stacked Buy Levels",
+              "type": "integer"
+            },
+            "stacked_sell_levels": {
+              "default": 0,
+              "title": "Stacked Sell Levels",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "timestamp"
+          ],
+          "title": "FootprintSnapshot",
+          "type": "object"
+        },
+        "VolumeNode": {
+          "additionalProperties": false,
+          "properties": {
+            "low": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Low"
+            },
+            "high": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "High"
+            },
+            "relative_volume": {
+              "title": "Relative Volume",
+              "type": "number"
+            },
+            "age_events": {
+              "default": 0,
+              "title": "Age Events",
+              "type": "integer"
+            },
+            "retests": {
+              "default": 0,
+              "title": "Retests",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "low",
+            "high",
+            "relative_volume"
+          ],
+          "title": "VolumeNode",
+          "type": "object"
+        },
+        "VolumeProfileSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "timestamp": {
+              "format": "date-time",
+              "title": "Timestamp",
+              "type": "string"
+            },
+            "poc": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Poc"
+            },
+            "vah": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Vah"
+            },
+            "val": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Val"
+            },
+            "hvn_zones": {
+              "items": {
+                "$ref": "#/$defs/VolumeNode"
+              },
+              "title": "Hvn Zones",
+              "type": "array"
+            },
+            "lvn_zones": {
+              "items": {
+                "$ref": "#/$defs/VolumeNode"
+              },
+              "title": "Lvn Zones",
+              "type": "array"
+            }
+          },
+          "required": [
+            "timestamp",
+            "poc",
+            "vah",
+            "val"
+          ],
+          "title": "VolumeProfileSnapshot",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "default": "FABIO_MECHANICAL_V1",
+          "title": "Contract Version",
+          "type": "string"
+        },
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "session": {
+          "title": "Session",
+          "type": "string"
+        },
+        "event_index": {
+          "title": "Event Index",
+          "type": "integer"
+        },
+        "last_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Last Price"
+        },
+        "bid": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Bid"
+        },
+        "ask": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Ask"
+        },
+        "tick_size": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Tick Size"
+        },
+        "structure_direction": {
+          "$ref": "#/$defs/Direction",
+          "default": "FLAT"
+        },
+        "auction": {
+          "$ref": "#/$defs/AuctionFeatureSnapshot"
+        },
+        "volume_profile": {
+          "$ref": "#/$defs/VolumeProfileSnapshot"
+        },
+        "impulse_profile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VolumeProfileSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "reclaim_profile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VolumeProfileSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "delta_zscore": {
+          "default": 0.0,
+          "title": "Delta Zscore",
+          "type": "number"
+        },
+        "cvd_slope": {
+          "default": 0.0,
+          "title": "Cvd Slope",
+          "type": "number"
+        },
+        "big_print_percentile": {
+          "default": 0.0,
+          "title": "Big Print Percentile",
+          "type": "number"
+        },
+        "stacked_imbalance_ratio": {
+          "default": 1.0,
+          "title": "Stacked Imbalance Ratio",
+          "type": "number"
+        },
+        "stacked_levels": {
+          "default": 0,
+          "title": "Stacked Levels",
+          "type": "integer"
+        },
+        "absorption_score": {
+          "default": 0.0,
+          "title": "Absorption Score",
+          "type": "number"
+        },
+        "rejection_speed": {
+          "default": 0.0,
+          "title": "Rejection Speed",
+          "type": "number"
+        },
+        "pulling_stacking_score": {
+          "default": 0.0,
+          "title": "Pulling Stacking Score",
+          "type": "number"
+        },
+        "directional_aggression": {
+          "$ref": "#/$defs/Direction",
+          "default": "FLAT"
+        },
+        "footprint": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FootprintSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "book": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BookSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "data_quality_score": {
+          "default": 1.0,
+          "title": "Data Quality Score",
+          "type": "number"
+        },
+        "trade_safe": {
+          "default": true,
+          "title": "Trade Safe",
+          "type": "boolean"
+        },
+        "stale_ms": {
+          "default": 0,
+          "title": "Stale Ms",
+          "type": "integer"
+        },
+        "news_day": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "News Day"
+        },
+        "volatility_regime": {
+          "default": "NORMAL",
+          "enum": [
+            "LOW",
+            "NORMAL",
+            "HIGH"
+          ],
+          "title": "Volatility Regime",
+          "type": "string"
+        },
+        "market_regime": {
+          "default": "TRANSITION",
+          "enum": [
+            "BALANCE",
+            "TREND",
+            "TRANSITION"
+          ],
+          "title": "Market Regime",
+          "type": "string"
+        }
+      },
+      "required": [
+        "timestamp",
+        "instrument",
+        "session",
+        "event_index",
+        "last_price",
+        "bid",
+        "ask",
+        "tick_size",
+        "auction",
+        "volume_profile"
+      ],
+      "title": "MarketFeatureSnapshot",
+      "type": "object"
+    },
+    "DecisionSnapshot": {
+      "$defs": {
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "SetupType": {
+          "enum": [
+            "TREND",
+            "MEAN_REVERSION"
+          ],
+          "title": "SetupType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "setup_type": {
+          "$ref": "#/$defs/SetupType"
+        },
+        "direction": {
+          "$ref": "#/$defs/Direction"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "title": "Evidence",
+          "type": "object"
+        },
+        "parameter_version": {
+          "title": "Parameter Version",
+          "type": "string"
+        },
+        "config_hash": {
+          "title": "Config Hash",
+          "type": "string"
+        },
+        "trade_safe": {
+          "title": "Trade Safe",
+          "type": "boolean"
+        },
+        "provider": {
+          "default": "MECHANICAL",
+          "title": "Provider",
+          "type": "string"
+        },
+        "ai_enabled": {
+          "default": false,
+          "title": "Ai Enabled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "timestamp",
+        "instrument",
+        "setup_type",
+        "direction",
+        "state",
+        "evidence",
+        "parameter_version",
+        "config_hash",
+        "trade_safe"
+      ],
+      "title": "DecisionSnapshot",
+      "type": "object"
+    },
+    "TradeCandidate": {
+      "$defs": {
+        "DecisionSnapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "timestamp": {
+              "format": "date-time",
+              "title": "Timestamp",
+              "type": "string"
+            },
+            "instrument": {
+              "title": "Instrument",
+              "type": "string"
+            },
+            "setup_type": {
+              "$ref": "#/$defs/SetupType"
+            },
+            "direction": {
+              "$ref": "#/$defs/Direction"
+            },
+            "state": {
+              "title": "State",
+              "type": "string"
+            },
+            "evidence": {
+              "additionalProperties": true,
+              "title": "Evidence",
+              "type": "object"
+            },
+            "parameter_version": {
+              "title": "Parameter Version",
+              "type": "string"
+            },
+            "config_hash": {
+              "title": "Config Hash",
+              "type": "string"
+            },
+            "trade_safe": {
+              "title": "Trade Safe",
+              "type": "boolean"
+            },
+            "provider": {
+              "default": "MECHANICAL",
+              "title": "Provider",
+              "type": "string"
+            },
+            "ai_enabled": {
+              "default": false,
+              "title": "Ai Enabled",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "timestamp",
+            "instrument",
+            "setup_type",
+            "direction",
+            "state",
+            "evidence",
+            "parameter_version",
+            "config_hash",
+            "trade_safe"
+          ],
+          "title": "DecisionSnapshot",
+          "type": "object"
+        },
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "SetupType": {
+          "enum": [
+            "TREND",
+            "MEAN_REVERSION"
+          ],
+          "title": "SetupType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "setup_type": {
+          "$ref": "#/$defs/SetupType"
+        },
+        "direction": {
+          "$ref": "#/$defs/Direction"
+        },
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "entry_reference": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Entry Reference"
+        },
+        "stop_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Stop Price"
+        },
+        "target_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Target Price"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "title": "Evidence",
+          "type": "object"
+        },
+        "decision_snapshot": {
+          "$ref": "#/$defs/DecisionSnapshot"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "setup_type",
+        "direction",
+        "timestamp",
+        "instrument",
+        "entry_reference",
+        "stop_price",
+        "target_price",
+        "evidence",
+        "decision_snapshot"
+      ],
+      "title": "TradeCandidate",
+      "type": "object"
+    },
+    "ExecutionIntent": {
+      "$defs": {
+        "Direction": {
+          "enum": [
+            "LONG",
+            "SHORT",
+            "FLAT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "OrderType": {
+          "enum": [
+            "MARKET",
+            "LIMIT"
+          ],
+          "title": "OrderType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "intent_id": {
+          "title": "Intent Id",
+          "type": "string"
+        },
+        "candidate_id": {
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "direction": {
+          "$ref": "#/$defs/Direction"
+        },
+        "order_type": {
+          "$ref": "#/$defs/OrderType"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "limit_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Limit Price"
+        },
+        "reference_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference Price"
+        },
+        "stop_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Stop Price"
+        },
+        "target_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Target Price"
+        },
+        "max_slippage_ticks": {
+          "default": 10,
+          "title": "Max Slippage Ticks",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "intent_id",
+        "candidate_id",
+        "timestamp",
+        "instrument",
+        "direction",
+        "order_type",
+        "quantity",
+        "stop_price",
+        "target_price"
+      ],
+      "title": "ExecutionIntent",
+      "type": "object"
+    },
+    "ExecutionReport": {
+      "$defs": {
+        "Fill": {
+          "additionalProperties": false,
+          "properties": {
+            "timestamp": {
+              "format": "date-time",
+              "title": "Timestamp",
+              "type": "string"
+            },
+            "price": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Price"
+            },
+            "quantity": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "title": "Quantity"
+            },
+            "fee": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Fee"
+            },
+            "slippage_ticks": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                }
+              ],
+              "default": "0",
+              "title": "Slippage Ticks"
+            }
+          },
+          "required": [
+            "timestamp",
+            "price",
+            "quantity"
+          ],
+          "title": "Fill",
+          "type": "object"
+        },
+        "OrderStatus": {
+          "enum": [
+            "NEW",
+            "PARTIAL",
+            "FILLED",
+            "REJECTED",
+            "CANCELLED"
+          ],
+          "title": "OrderStatus",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "intent_id": {
+          "title": "Intent Id",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/OrderStatus"
+        },
+        "fills": {
+          "items": {
+            "$ref": "#/$defs/Fill"
+          },
+          "title": "Fills",
+          "type": "array"
+        },
+        "rejected_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rejected Reason"
+        },
+        "latency_ms": {
+          "default": 0,
+          "title": "Latency Ms",
+          "type": "integer"
+        },
+        "total_quantity": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Total Quantity"
+        },
+        "filled_quantity": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Filled Quantity"
+        },
+        "average_fill_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Average Fill Price"
+        }
+      },
+      "required": [
+        "intent_id",
+        "status"
+      ],
+      "title": "ExecutionReport",
+      "type": "object"
+    }
+  }
+}
